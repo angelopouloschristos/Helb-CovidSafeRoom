@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Super Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CovidSafeAnalysis</title>
+    <link rel="stylesheet" href="css/index.css" >
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/element.loader.js"></script>
 </head>
+
 <body>
-    
+<!-- Loaded header via JS-->
+<div id="header"></div>
+
+<div id="bodygraph">
+<div class="multi-graph margin">
+    CO2
+    <div class="graph" data-name="Dangereux"
+         style="--percentage : 100; --fill: red ;">
+    </div>
+    <div class="graph" data-name="Attention"
+         style="--percentage : 60; --fill: orange ;">
+    </div>
+    <div class="graph" data-name="Tout est bon"
+         style="--percentage : 20; --fill: green ;">
+    </div>
+</div>
+</div>
 </body>
-<script>
-    window.location.replace("../resources/views/Index.html");
-</script>
+
+<!-- Optional JavaScript -->
+<!-- If needed, jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/bootstrap.bundle.js"></script> <!-- Ajout du bootstrap JS-->
+
 </html>

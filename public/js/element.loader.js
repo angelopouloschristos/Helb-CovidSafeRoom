@@ -13,18 +13,18 @@ window.onload = function ()
         "            <div class=\"collapse navbar-collapse\" id=\"navbarColor01\">\n" +
         "                <ul class=\"navbar-nav me-auto\">\n" +
         "                    <li class=\"nav-item\">\n" +
-        "                        <a class=\"nav-link active\" href=\"Index.html\">Home\n" +
+        "                        <a class=\"nav-link active\" href=\"Index.php\">Home\n" +
         "                            <span class=\"visually-hidden\">(current)</span>\n" +
         "                        </a>\n" +
         "                    </li>\n" +
         "                    <li class=\"nav-item\">\n" +
-        "                        <a class=\"nav-link\" href=\"admin.html\">Admin</a>\n" +
+        "                        <a class=\"nav-link\" href=\"admin.php\">Admin</a>\n" +
         "                    </li>\n" +
         "                    <li class=\"nav-item\">\n" +
-        "                        <a class=\"nav-link\" href=\"graphs.html\">Graphs</a>\n" +
+        "                        <a class=\"nav-link\" href=\"graphs.php\">Graphs</a>\n" +
         "                    </li>\n" +
         "                    <li class=\"nav-item\">\n" +
-        "                        <a class=\"nav-link\" href=\"about.html\">About</a>\n" +
+        "                        <a class=\"nav-link\" href=\"about.php\">About</a>\n" +
         "                    </li>\n" +
         "                </ul>\n" +
         "            </div>\n" +
