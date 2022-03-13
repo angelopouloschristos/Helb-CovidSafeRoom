@@ -14,7 +14,7 @@
 <?php
     session_start();
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! quand on va dans about-> la session est delete
-    //                                   c'est pour le developpement 
+    //                                   c'est pour le developpement
     //si on est deja connecter alors redirection vers home
     if (isset($_SESSION["logged"])) {
         //echo 'connextion avec succes';
@@ -60,7 +60,7 @@
             <label for="exampleInputPassword1" class="form-label mt-4">Mot de passe</label>
             <input type="password" class="form-control" name="input_password" placeholder="Mot de passe...">
         </div>
-        <input type="submit" name="submit" value="Se Connecter"> 
+        <button type="submit" class="btn btn-primary">Se connecter</button>
     </fieldset>
 </form>
 
