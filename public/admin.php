@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CovidSafeAnalysis</title>
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script type="text/javascript" src="../js/element.loader.js"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/element.loader.js"></script>
 </head>
 <body>
 <div id="header"></div>
@@ -14,7 +14,7 @@
 <?php
     session_start();
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! quand on va dans about-> la session est delete
-    //                                   c'est pour le developpement
+    //                                   c'est pour le developpement 
     //si on est deja connecter alors redirection vers home
     if (isset($_SESSION["logged"])) {
         //echo 'connextion avec succes';
@@ -67,4 +67,6 @@
 
 </div>
 </body>
+<script src="js/bootstrap.bundle.js"></script> <!-- Ajout du bootstrap JS-->
+
 </html>

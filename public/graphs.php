@@ -9,5 +9,7 @@
 </head>
 <body>
 <div id="header"></div>
+    <a href="local1.php">local 1506</a> </br>
+    <a href="local2.php">local 1507</a> </br>
 </body>
 </html>

@@ -1,15 +1,36 @@
 header{
-    overflow: hidden;
+    overflow: auto;
 }
 img{
     -webkit-user-drag: none;
 }
+/********** START GRAPH **********/
+.wrapper {
+    width: 80%;
+    height: auto;
+    margin: 6em auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
 
+.container {
+    flex: 1;
+    padding: 0 20px;
+}
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px) {
+
+}
+/********** END GRAPH **********/
+
+/*
 /*@media (max-width:992px){
     #bodygraph { width:100% !important; }
 }*/
 
-/********** START GRAPH ********/
+/********** OLD START GRAPH
 #bodygraph {
     background: #1F2428;
     text-align: center;
@@ -133,10 +154,10 @@ img{
         transform: rotate(180deg);
     }
 }
-/********** END GRAPH ********/
+OLD END GRAPH ********/
 
 
-/********** START BUTTON ANIMATION *********/
+/********** START BUTTON ANIMATION
 
 .pulse {
     --hover: #407ec5;
@@ -163,4 +184,4 @@ img{
         box-shadow: 0 0 0 0 var(--hover);
     }
 }
-/********** END BUTTON ANIMATION *********/
+END BUTTON ANIMATION *********/
