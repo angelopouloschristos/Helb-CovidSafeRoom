@@ -14,7 +14,10 @@
 <div id="header"></div>
 
 <div class="wrapper">
+
     <div class="container chart" data-size="300" data-value="500" data-arrow="up">
+        <span style="font-size: 1.6em">Local 1506</span>
+        <p></p>
     </div>
 </div>
 

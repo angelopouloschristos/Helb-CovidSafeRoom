@@ -13,7 +13,9 @@ img{
     display: flex;
     justify-content: space-evenly;
 }
-
+span{
+    color: #78F8EC;
+}
 .container {
     flex: 1;
     padding: 0 20px;
