@@ -13,24 +13,16 @@
 <!-- Loaded header via JS-->
 <div id="header"></div>
 
-<div id="bodygraph">
-<div class="multi-graph margin">
-    450 PPM
-    <div class="graph" data-name="Dangereux"
-         style="--percentage : 0; --fill: red ;">
-    </div>
-    <div class="graph" data-name="Attention"
-         style="--percentage : 0; --fill: orange ;">
-    </div>
-    <div class="graph" data-name="Tout est bon"
-         style="--percentage : 40; --fill: green ;">
+<div class="wrapper">
+    <div class="container chart" data-size="300" data-value="750" data-arrow="up">
     </div>
 </div>
+
 </div>
 </body>
 
 <!-- Optional JavaScript -->
 <!-- If needed, jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/bootstrap.bundle.js"></script> <!-- Ajout du bootstrap JS-->
-
+<script type="text/javascript" src="js/donut.js"></script>
 </html>

@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="css/index.css" >
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/element.loader.js"></script>
+	<style>
+	.form{
+		display: flex;
+		width: auto;
+		height: 80vh;
+		justify-content: center;
+		align-items: center;
+
+	}
+	</style>
 </head>
 
 <body>
@@ -39,7 +49,7 @@
         $email = $_POST["input_email"];
         $pass = $_POST["input_password"];
         //si elles sont correct
-        if ($email == 'helb@gmail.com' && $pass == 'admin') {
+        if ($email == 'a' && $pass == 'b') {
             $_SESSION["logged"] = true;
             echo '<script>alert("Connexion avec succes");</script>';
             echo '<script>window.location = "index.php"</script>';
@@ -61,7 +71,7 @@
 
         <div class="form-group">
             <label for="exampleInputEmail1" class="form-label mt-4">Adresse mail</label>
-            <input type="email" class="form-control" name="input_email" aria-describedby="emailHelp" placeholder="Adresse mail...">
+            <input type="text" class="form-control" name="input_email" aria-describedby="emailHelp" placeholder="Adresse mail...">
             <small id="emailHelp" class="form-text text-muted">Ne communiquez jamais vos identifiants.</small>
         </div>
         <div class="form-group">
