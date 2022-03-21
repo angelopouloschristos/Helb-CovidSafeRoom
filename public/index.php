@@ -75,8 +75,6 @@ if (empty($_POST["input_email"]) && empty($_POST["input_password"])) {
             <button type="submit" class="btn btn-primary">Se connecter</button>
         </fieldset>
     </form>
-
-
 </div>
 </div>
 
