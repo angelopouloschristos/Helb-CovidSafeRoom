@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CovidSafeAnalysis</title>
+    <title>CovidSafeRoom</title>
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/element.loader.js"></script>
@@ -15,6 +15,9 @@
 
 <?php
 session_start();
+require_once("connection.php");
+#fetch info sur admin dans db
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! quand on va dans about-> la session est delete
 //                                   c'est pour le developpement
 //si on est deja connecter alors redirection vers home
@@ -32,8 +35,14 @@ if (empty($_POST["input_email"]) && empty($_POST["input_password"])) {
 }else{//les input existe
     $email = $_POST["input_email"];
     $pass = $_POST["input_password"];
+    
+    $stmt = $dbh->prepare("SELECT * FROM `administrateur`where email = '$email' and  mdp= '$pass' ") ;
+    $stmt->execute(); 
+    $admin = $stmt->fetch();
+
+    
     //si elles sont correct
-    if ($email == 'a' && $pass == 'b') {
+    if (isset($admin['idAdmin'])) {
         $_SESSION["logged"] = true;
         echo '<script>alert("Connexion avec succes");</script>';
         echo '<script>window.location = "index.php"</script>';
