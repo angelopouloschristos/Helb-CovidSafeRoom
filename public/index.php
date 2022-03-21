@@ -36,7 +36,7 @@ if (empty($_POST["input_email"]) && empty($_POST["input_password"])) {
     $email = $_POST["input_email"];
     $pass = $_POST["input_password"];
     
-    $stmt = $dbh->prepare("SELECT * FROM `administrateur`where email = '$email' and  mdp= '$pass' ") ;
+    $stmt = $dbh->prepare("SELECT * FROM `Administrateur`where email = '$email' and  mdp= '$pass' ") ;
     $stmt->execute(); 
     $admin = $stmt->fetch();
 

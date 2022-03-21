@@ -17,7 +17,7 @@
         $local = $stmt->fetch();
         $nom_local = $local['nom'];
         #select mesure du local
-        $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $local_en_cours and typeData = 3 ORDER BY `mesure`.`date_` ASC") ;
+        $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $local_en_cours and typeData = 3 ORDER BY `Mesure`.`date_` ASC") ;
         $stmt->execute();
         $mesure = $stmt->fetch();
         if ($mesure==null) {
