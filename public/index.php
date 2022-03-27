@@ -35,17 +35,17 @@ if (empty($_POST["input_email"]) && empty($_POST["input_password"])) {
 }else{//les input existe
     $email = $_POST["input_email"];
     $pass = $_POST["input_password"];
-
+    
     $stmt = $dbh->prepare("SELECT * FROM `Administrateur`where email = '$email' and  mdp= '$pass' ") ;
-    $stmt->execute();
+    $stmt->execute(); 
     $admin = $stmt->fetch();
 
-
+    
     //si elles sont correct
     if (isset($admin['idAdmin'])) {
         $_SESSION["logged"] = true;
         echo '<script>alert("Connexion avec succes");</script>';
-        echo '<script>window.location = "graphs.php"</script>';
+        echo '<script>window.location = "index.php"</script>';
     }else {
         $error_login = true;
     }

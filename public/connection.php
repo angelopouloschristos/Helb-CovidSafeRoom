@@ -21,12 +21,12 @@ $dbh = null;
 //**************************************
 // connexion à mysql et à la db
 //**************************************
-try
+try 
 {
 	$dbh = new PDO($dsn, $user, $pass); //db handle
 	$dbh->exec('SET NAMES utf8');
-}
-catch (PDOException $e)
+} 
+catch (PDOException $e) 
 {
 	die( "Erreur ! : " . $e->getMessage() );
 }
