@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(https://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial);
+[class*="entypo-"]:before {
+    font-family: entypo, sans-serif;
+}
+[class*="fontawesome-"]:before {
+    font-family: FontAwesome, sans-serif;
+}
+[class*="zocial-"]:before {
+    font-family: zocial, sans-serif;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 23px;
+}
+h2 {
+    font-size: 17px;
+}
+p {
+    font-size: 15px;
+}
+h1,
+h2,
+p {
+    color: #fff;
+}
+.desc-font-color {
+    color: #9099b7;
+}
+/*.clear {
+    clear: both;
+}*/
+img{
+    -webkit-user-drag: none;
+}
+.profile-picture {
+    border-radius: 100%;
+    overflow: hidden;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    margin: 0 auto;
+    border: 5px solid #50597b;
+    width: 150px;
+    height: 150px;
+
+}
+
+#parent-container {
+    font-family: Ubuntu, sans-serif;
+    width: 80%;
+    height: auto;
+    margin: 6em auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+/* For Mobile */
+@media screen and (max-width: 540px) {
+    #parent-container {
+        display: block;
+    }
+}
+
+.block {
+    height: 410px;
+    margin-bottom: 25px;
+    background: #394264;
+    border-radius: 10px;
+    padding-right: 10px;
+}
+.user-name {
+    margin: 25px 0 16px;
+    text-align: center;
+}
+.profile-description {
+    width: 210px;
+    margin: 0 auto;
+    text-align: center;
+}
+

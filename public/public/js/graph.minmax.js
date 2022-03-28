@@ -1,0 +1,516 @@
+// ============================================
+// As of Chart.js v2.5.0
+// http://www.chartjs.org/docs
+// ============================================
+
+//////////////////////////////////////////////////////DEFINE CHART 1//////////////////////////////////////////////////////////////////////////////////
+
+var chartData1 = document.getElementById('chartDataLocal1').getContext('2d'),
+    gradient1 = chartData1.createLinearGradient(0, 0, 0, 450);
+
+gradient1.addColorStop(0, 'rgba(0, 177, 72, 0.5)');
+gradient1.addColorStop(0.5, 'rgba(0, 177, 72, 0.25)');
+gradient1.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DEFINE CHART 2//////////////////////////////////////////////////////////////////////////////////
+
+var chartMaxima1 = document.getElementById('chartMaximaLocal1').getContext('2d'),
+    gradient2 = chartMaxima1.createLinearGradient(0, 0, 0, 450);
+
+gradient2.addColorStop(0, 'rgba(255, 0,0, 0.5)');
+gradient2.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
+gradient2.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DEFINE CHART 3//////////////////////////////////////////////////////////////////////////////////
+
+var chartMinima1 = document.getElementById('chartMinimaLocal1').getContext('2d'),
+    gradient3 = chartMinima1.createLinearGradient(0, 0, 0, 450);
+
+gradient3.addColorStop(0, 'rgba(0, 39, 195, 0.5)');
+gradient3.addColorStop(0.5, 'rgba(0, 39, 195, 0.25)');
+gradient3.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DEFINE CHART 4//////////////////////////////////////////////////////////////////////////////////
+
+var chartMoyenne1 = document.getElementById('chartMoyenne1').getContext('2d'),
+    gradient4 = chartMoyenne1.createLinearGradient(0, 0, 0, 450);
+
+gradient4.addColorStop(0, 'rgba(231, 255, 97, 0.5)');
+gradient4.addColorStop(0.5, 'rgba(231, 255, 97, 0.25)');
+gradient4.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DEFINE CHART 5//////////////////////////////////////////////////////////////////////////////////
+
+var chartEcartType1 = document.getElementById('chartEcartType1').getContext('2d'),
+    gradient5 = chartEcartType1.createLinearGradient(0, 0, 0, 450);
+
+gradient5.addColorStop(0, 'rgba(97, 158, 255, 0.5)');
+gradient5.addColorStop(0.5, 'rgba(97, 158, 255, 0.25)');
+gradient5.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DEFINE CHART 6//////////////////////////////////////////////////////////////////////////////////
+
+var chartMediane1 = document.getElementById('chartMediane1').getContext('2d'),
+    gradient6 = chartMediane1.createLinearGradient(0, 0, 0, 450);
+
+gradient6.addColorStop(0, 'rgba(115, 97, 255, 0.5)');
+gradient6.addColorStop(0.5, 'rgba(115, 97, 255, 0.25)');
+gradient6.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DATA 1//////////////////////////////////////////////////////////////////////////////////
+
+var data1  = {
+    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    datasets: [{
+        label: 'PPM',
+        backgroundColor: gradient1,
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#00b148',
+        hoverBackgroundColor: '#00b148',
+        data: [50, 55, 80, 85, 80, 55, 50]
+    }]
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DATA 2//////////////////////////////////////////////////////////////////////////////////
+var data2  = {
+    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    datasets: [{
+        label: 'PPM',
+        backgroundColor: gradient2,
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#911215',
+        hoverBackgroundColor: '#911215',
+        data: [50, 55, 80, 85, 80, 55, 50]
+    }]
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DATA 3//////////////////////////////////////////////////////////////////////////////////
+var data3  = {
+    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    datasets: [{
+        label: 'PPM',
+        backgroundColor: gradient3,
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#0027c3',
+        hoverBackgroundColor: '#0027c3',
+
+        data: [50, 55, 80, 85, 80, 55, 50]
+    }]
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DATA 4//////////////////////////////////////////////////////////////////////////////////
+var data4  = {
+    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    datasets: [{
+        label: 'PPM',
+        backgroundColor: gradient4,
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#e7ff61',
+        hoverBackgroundColor: '#e7ff61',
+
+        data: [50, 55, 80, 85, 80, 55, 50]
+    }]
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DATA 5//////////////////////////////////////////////////////////////////////////////////
+var data5  = {
+    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    datasets: [{
+        label: 'PPM',
+        backgroundColor: gradient5,
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#619eff',
+        hoverBackgroundColor: '#619eff',
+
+        data: [50, 55, 80, 85, 80, 55, 50]
+    }]
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////DATA 6//////////////////////////////////////////////////////////////////////////////////
+var data6  = {
+    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    datasets: [{
+        label: 'PPM',
+        backgroundColor: gradient6,
+        pointBackgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#7361ff',
+        hoverBackgroundColor: '#7361ff',
+
+        data: [50, 55, 80, 85, 80, 55, 50]
+    }]
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////GRAPHIC OPTION 1//////////////////////////////////////////////////////////////////////////////////
+var options1 = {
+    responsive: false,
+    maintainAspectRatio: true,
+    animation: {
+        easing: 'easeInOutQuad',
+        duration: 520
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.05)',
+                lineWidth: 1
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.08)',
+                lineWidth: 1
+            }
+        }]
+    },
+    elements: {
+        line: {
+            tension: 0.4
+        }
+    },
+    legend: {
+        display: false
+    },
+    point: {
+        backgroundColor: 'white'
+    },
+    tooltips: {
+        titleFontFamily: 'Open Sans',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        titleFontColor: 'red',
+        caretSize: 5,
+        cornerRadius: 2,
+        xPadding: 10,
+        yPadding: 10
+    },
+
+    title: {
+        display: true,
+        text: 'Local 1 données en temps réel'
+    }
+
+
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////GRAPHIC OPTION 2//////////////////////////////////////////////////////////////////////////////////
+var options2 = {
+    responsive: false,
+    maintainAspectRatio: true,
+    animation: {
+        easing: 'easeInOutQuad',
+        duration: 520
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.05)',
+                lineWidth: 1
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.08)',
+                lineWidth: 1
+            }
+        }]
+    },
+    elements: {
+        line: {
+            tension: 0.4
+        }
+    },
+    legend: {
+        display: false
+    },
+    point: {
+        backgroundColor: 'white'
+    },
+    tooltips: {
+        titleFontFamily: 'Open Sans',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        titleFontColor: 'red',
+        caretSize: 5,
+        cornerRadius: 2,
+        xPadding: 10,
+        yPadding: 10
+    },
+    title: {
+        display: true,
+        text: 'Local 1 maxima'
+    }
+
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////GRAPHIC OPTION 3//////////////////////////////////////////////////////////////////////////////////
+var options3 = {
+    responsive: false,
+    maintainAspectRatio: true,
+    animation: {
+        easing: 'easeInOutQuad',
+        duration: 520
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.05)',
+                lineWidth: 1
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.08)',
+                lineWidth: 1
+            }
+        }]
+    },
+    elements: {
+        line: {
+            tension: 0.4
+        }
+    },
+    legend: {
+        display: false
+    },
+    point: {
+        backgroundColor: 'white'
+    },
+    tooltips: {
+        titleFontFamily: 'Open Sans',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        titleFontColor: 'red',
+        caretSize: 5,
+        cornerRadius: 2,
+        xPadding: 10,
+        yPadding: 10
+    },
+    title: {
+        display: true,
+        text: 'Local 1 minima'
+    }
+
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////GRAPHIC OPTION 4//////////////////////////////////////////////////////////////////////////////////
+var options4 = {
+    responsive: false,
+    maintainAspectRatio: true,
+    animation: {
+        easing: 'easeInOutQuad',
+        duration: 520
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.05)',
+                lineWidth: 1
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.08)',
+                lineWidth: 1
+            }
+        }]
+    },
+    elements: {
+        line: {
+            tension: 0.4
+        }
+    },
+    legend: {
+        display: false
+    },
+    point: {
+        backgroundColor: 'white'
+    },
+    tooltips: {
+        titleFontFamily: 'Open Sans',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        titleFontColor: 'red',
+        caretSize: 5,
+        cornerRadius: 2,
+        xPadding: 10,
+        yPadding: 10
+    },
+
+    title: {
+        display: true,
+        text: 'Local 1 moyenne'
+    }
+
+
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////GRAPHIC OPTION 5//////////////////////////////////////////////////////////////////////////////////
+var options5 = {
+    responsive: false,
+    maintainAspectRatio: true,
+    animation: {
+        easing: 'easeInOutQuad',
+        duration: 520
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.05)',
+                lineWidth: 1
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.08)',
+                lineWidth: 1
+            }
+        }]
+    },
+    elements: {
+        line: {
+            tension: 0.4
+        }
+    },
+    legend: {
+        display: false
+    },
+    point: {
+        backgroundColor: 'white'
+    },
+    tooltips: {
+        titleFontFamily: 'Open Sans',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        titleFontColor: 'red',
+        caretSize: 5,
+        cornerRadius: 2,
+        xPadding: 10,
+        yPadding: 10
+    },
+
+    title: {
+        display: true,
+        text: 'Local 1 écart-type'
+    }
+
+
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////GRAPHIC OPTION 6//////////////////////////////////////////////////////////////////////////////////
+var options6 = {
+    responsive: false,
+    maintainAspectRatio: true,
+    animation: {
+        easing: 'easeInOutQuad',
+        duration: 520
+    },
+    scales: {
+        xAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.05)',
+                lineWidth: 1
+            }
+        }],
+        yAxes: [{
+            gridLines: {
+                color: 'rgba(200, 200, 200, 0.08)',
+                lineWidth: 1
+            }
+        }]
+    },
+    elements: {
+        line: {
+            tension: 0.4
+        }
+    },
+    legend: {
+        display: false
+    },
+    point: {
+        backgroundColor: 'white'
+    },
+    tooltips: {
+        titleFontFamily: 'Open Sans',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        titleFontColor: 'red',
+        caretSize: 5,
+        cornerRadius: 2,
+        xPadding: 10,
+        yPadding: 10
+    },
+
+    title: {
+        display: true,
+        text: 'Local 1 médiane'
+    }
+
+
+};
+//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////CHART INSTANCE CREATION//////////////////////////////////////////////
+var chartInstance = new Chart(chartData1, {
+    type: 'line',
+    data: data1,
+    options: options1,
+
+
+});
+
+var chartInstance = new Chart(chartMaxima1, {
+    type: 'line',
+    data: data2,
+    options: options2
+
+});
+
+var chartInstance = new Chart(chartMinima1, {
+    type: 'line',
+    data: data3,
+    options: options3
+});
+
+var chartInstance = new Chart(chartMoyenne1, {
+    type: 'line',
+    data: data4,
+    options: options4
+});
+
+var chartInstance = new Chart(chartEcartType1, {
+    type: 'line',
+    data: data5,
+    options: options5
+});
+
+var chartInstance = new Chart(chartMediane1, {
+    type: 'line',
+    data: data6,
+    options: options6
+});
+
+//////////////////////////////////////////////////////////END//////////////////////////////////////////////

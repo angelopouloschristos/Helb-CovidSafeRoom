@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #252429;
+}
+
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.line-chart {
+    -webkit-animation: fadeIn 600ms cubic-bezier(0.57, 0.25, 0.65, 1) 1 forwards;
+    animation: fadeIn 600ms cubic-bezier(0.57, 0.25, 0.65, 1) 1 forwards;
+    opacity: 0;
+    max-width: 300px;
+    width: auto;
+    display: flex;
+}
+
+.aspect-ratio {
+    height: 0;
+    padding-bottom: 50%;
+    margin-top: 100px;
+}
+
+@-webkit-keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+.chart{
+    display: block;
+    width: 600px;
+    height: 300px;
+}
+.space{
+    margin-top: 100px;
+}
