@@ -3,7 +3,7 @@
 //connexion.php
 
 // on défini les paramètre de connexion à la DB
-//**************   local   */
+//**************   local */
 #$host='127.0.0.1';
 #$user='root';
 #$pass='';

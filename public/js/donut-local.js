@@ -102,7 +102,7 @@ Dial.prototype.createText = function() {
     text.setAttribute('fill', '#78F8EC');
     text.setAttribute('text-anchor', 'middle');
     var tspanSize = fontSize / 3;
-    text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">PPM</tspan>';
+    text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
     this.svg.appendChild(text);
     this.text = text;
 };
@@ -146,6 +146,63 @@ Dial.prototype.animateStart = function() {
         self.setValue(v);
     }, 10);
 };
+//fkjdhwswwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsw
+Dial.prototype.animateStart2 = function() {
+    var v = 0;
+    var self = this;
+    var intervalOne = setInterval(function() {
+        //var p = +(v / self.value).toFixed(2);
+        var a =3;
+        var x = 0;
+        v += a;
+        // Stop
+        if(v >= +self.value) {
+            v = self.value;
+            clearInterval(intervalOne);
+        }
+        self.setValue2(v,100);
+    }, 10);
+};
+Dial.prototype.setValue2 = function(value,max) {
+    var c = (value / max) * 360;
+    if(c === 360)
+        c = 359.99;
+    var xy = this.size / 2 - this.strokeWidth / 2;
+
+    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
+    this.slice.setAttribute('d', d);
+    var tspanSize = (this.size / 3.5) / 3;
+    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
+
+};
+Dial.prototype.animateStart3 = function() {
+    var v = 0;
+    var self = this;
+    var intervalOne = setInterval(function() {
+        //var p = +(v / self.value).toFixed(2);
+        var a =3;
+        var x = 0;
+        v += a;
+        // Stop
+        if(v >= +self.value) {
+            v = self.value;
+            clearInterval(intervalOne);
+        }
+        self.setValue2(v,50);
+    }, 10);
+};
+Dial.prototype.setValue3 = function(value,max) {
+    var c = (value / max) * 360;
+    if(c === 360)
+        c = 359.99;
+    var xy = this.size / 2 - this.strokeWidth / 2;
+
+    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
+    this.slice.setAttribute('d', d);
+    var tspanSize = (this.size / 3.5) / 3;
+    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
+}
+//fkjdhwswwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsw
 
 Dial.prototype.animateReset = function() {
     this.setValue(0);
@@ -179,7 +236,7 @@ Dial.prototype.setValue = function(value) {
     var d = this.describeArc(xy, xy, xy, 180, 180 + c);
     this.slice.setAttribute('d', d);
     var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">ppm</tspan>';
+    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
 };
 
 //
@@ -193,6 +250,6 @@ dial3 = new Dial(containers[2]);
 dial4 = new Dial(containers[3]);
 
 dial.animateStart();
-dial2.animateStart();
-dial3.animateStart();
+dial2.animateStart3();
+dial3.animateStart2();
 dial4.animateStart();
