@@ -23,7 +23,7 @@ require_once("connection.php");
 //si on est deja connecter alors redirection vers home
 if (isset($_SESSION["logged"])) {
     //echo 'connextion avec succes';
-    header("Location : index.php");
+    header("Location : graphs.php");
     echo '<script>window.location = "graphs.php"</script>';
 }
 
@@ -45,7 +45,7 @@ if (empty($_POST["input_email"]) && empty($_POST["input_password"])) {
     if (isset($admin['idAdmin'])) {
         $_SESSION["logged"] = true;
         echo '<script>alert("Connexion avec succes");</script>';
-        echo '<script>window.location = "index.php"</script>';
+        echo '<script>window.location = "graphs.php"</script>';
     }else {
         $error_login = true;
     }
