@@ -70,9 +70,36 @@ gradient6.addColorStop(1, 'rgba(255, 0, 0, 0)');
 //////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////DATA 1//////////////////////////////////////////////////////////////////////////////////
+    var dt = new Date();
+    var day = dt.getDay();
+    function getDay(let) 
+    {
+        if (let<1) {
+            let = let+7;
+        }
 
+        switch (let) {
+            case 1:
+                return 'Lundi';
+            case 2:
+                return 'Mardi';
+            case 3:
+                return 'Mercredi';
+            case 4:
+                return 'Jeudi';
+            case 5:
+                return 'Ventredi';
+            case 6:
+                return 'Samedi';
+            case 7:
+                return 'Dimanche';
+
+            default:
+                break;
+        }
+    }
 var data1  = {
-    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    labels: [ ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
     datasets: [{
         label: 'PPM',
         backgroundColor: gradient1,
@@ -80,89 +107,40 @@ var data1  = {
         borderWidth: 1,
         borderColor: '#00b148',
         hoverBackgroundColor: '#00b148',
-        data: [50, 55, 80, 85, 80, 55, 50]
+        data: [day7, day6, day5, day4, day3, day2, day1 ]
     }]
 };
 //////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////DATA 2//////////////////////////////////////////////////////////////////////////////////
 var data2  = {
-    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    labels: [ ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
     datasets: [{
-        label: 'PPM',
+        label: '%',
         backgroundColor: gradient2,
         pointBackgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#911215',
         hoverBackgroundColor: '#911215',
-        data: [50, 55, 80, 85, 80, 55, 50]
+        data: [hum7, hum6, hum5, hum4, hum3, hum2, hum1]
     }]
 };
 //////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////DATA 3//////////////////////////////////////////////////////////////////////////////////
 var data3  = {
-    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
+    labels: [ ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
     datasets: [{
-        label: 'PPM',
+        label: '°C',
         backgroundColor: gradient3,
         pointBackgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#0027c3',
         hoverBackgroundColor: '#0027c3',
 
-        data: [50, 55, 80, 85, 80, 55, 50]
+        data: [tem7, tem6, tem5, tem4, tem3, tem2, tem1]
     }]
 };
-//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////DATA 4//////////////////////////////////////////////////////////////////////////////////
-var data4  = {
-    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
-    datasets: [{
-        label: 'PPM',
-        backgroundColor: gradient4,
-        pointBackgroundColor: 'white',
-        borderWidth: 1,
-        borderColor: '#e7ff61',
-        hoverBackgroundColor: '#e7ff61',
-
-        data: [50, 55, 80, 85, 80, 55, 50]
-    }]
-};
-//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////DATA 5//////////////////////////////////////////////////////////////////////////////////
-var data5  = {
-    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
-    datasets: [{
-        label: 'PPM',
-        backgroundColor: gradient5,
-        pointBackgroundColor: 'white',
-        borderWidth: 1,
-        borderColor: '#619eff',
-        hoverBackgroundColor: '#619eff',
-
-        data: [50, 55, 80, 85, 80, 55, 50]
-    }]
-};
-//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////DATA 6//////////////////////////////////////////////////////////////////////////////////
-var data6  = {
-    labels: [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ],
-    datasets: [{
-        label: 'PPM',
-        backgroundColor: gradient6,
-        pointBackgroundColor: 'white',
-        borderWidth: 1,
-        borderColor: '#7361ff',
-        hoverBackgroundColor: '#7361ff',
-
-        data: [50, 55, 80, 85, 80, 55, 50]
-    }]
-};
-//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////GRAPHIC OPTION 1//////////////////////////////////////////////////////////////////////////////////
@@ -210,7 +188,7 @@ var options1 = {
 
     title: {
         display: true,
-        text: 'Local 1 données en temps réel'
+        text: 'Les derniers mesures de Co2',
     }
 
 
@@ -261,7 +239,7 @@ var options2 = {
     },
     title: {
         display: true,
-        text: 'Local 1 maxima'
+        text: 'Les derniers mesures de Humidité'
     }
 
 };
@@ -311,164 +289,8 @@ var options3 = {
     },
     title: {
         display: true,
-        text: 'Local 1 minima'
+        text: 'Les derniers mesures de Temperature'
     }
-
-};
-//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////GRAPHIC OPTION 4//////////////////////////////////////////////////////////////////////////////////
-var options4 = {
-    responsive: false,
-    maintainAspectRatio: true,
-    animation: {
-        easing: 'easeInOutQuad',
-        duration: 520
-    },
-    scales: {
-        xAxes: [{
-            gridLines: {
-                color: 'rgba(200, 200, 200, 0.05)',
-                lineWidth: 1
-            }
-        }],
-        yAxes: [{
-            gridLines: {
-                color: 'rgba(200, 200, 200, 0.08)',
-                lineWidth: 1
-            }
-        }]
-    },
-    elements: {
-        line: {
-            tension: 0.4
-        }
-    },
-    legend: {
-        display: false
-    },
-    point: {
-        backgroundColor: 'white'
-    },
-    tooltips: {
-        titleFontFamily: 'Open Sans',
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        titleFontColor: 'red',
-        caretSize: 5,
-        cornerRadius: 2,
-        xPadding: 10,
-        yPadding: 10
-    },
-
-    title: {
-        display: true,
-        text: 'Local 1 moyenne'
-    }
-
-
-};
-//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////GRAPHIC OPTION 5//////////////////////////////////////////////////////////////////////////////////
-var options5 = {
-    responsive: false,
-    maintainAspectRatio: true,
-    animation: {
-        easing: 'easeInOutQuad',
-        duration: 520
-    },
-    scales: {
-        xAxes: [{
-            gridLines: {
-                color: 'rgba(200, 200, 200, 0.05)',
-                lineWidth: 1
-            }
-        }],
-        yAxes: [{
-            gridLines: {
-                color: 'rgba(200, 200, 200, 0.08)',
-                lineWidth: 1
-            }
-        }]
-    },
-    elements: {
-        line: {
-            tension: 0.4
-        }
-    },
-    legend: {
-        display: false
-    },
-    point: {
-        backgroundColor: 'white'
-    },
-    tooltips: {
-        titleFontFamily: 'Open Sans',
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        titleFontColor: 'red',
-        caretSize: 5,
-        cornerRadius: 2,
-        xPadding: 10,
-        yPadding: 10
-    },
-
-    title: {
-        display: true,
-        text: 'Local 1 écart-type'
-    }
-
-
-};
-//////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////GRAPHIC OPTION 6//////////////////////////////////////////////////////////////////////////////////
-var options6 = {
-    responsive: false,
-    maintainAspectRatio: true,
-    animation: {
-        easing: 'easeInOutQuad',
-        duration: 520
-    },
-    scales: {
-        xAxes: [{
-            gridLines: {
-                color: 'rgba(200, 200, 200, 0.05)',
-                lineWidth: 1
-            }
-        }],
-        yAxes: [{
-            gridLines: {
-                color: 'rgba(200, 200, 200, 0.08)',
-                lineWidth: 1
-            }
-        }]
-    },
-    elements: {
-        line: {
-            tension: 0.4
-        }
-    },
-    legend: {
-        display: false
-    },
-    point: {
-        backgroundColor: 'white'
-    },
-    tooltips: {
-        titleFontFamily: 'Open Sans',
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        titleFontColor: 'red',
-        caretSize: 5,
-        cornerRadius: 2,
-        xPadding: 10,
-        yPadding: 10
-    },
-
-    title: {
-        display: true,
-        text: 'Local 1 médiane'
-    }
-
 
 };
 //////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
@@ -483,34 +305,18 @@ var chartInstance = new Chart(chartData1, {
 });
 
 var chartInstance = new Chart(chartMaxima1, {
-    type: 'line',
-    data: data2,
-    options: options2
+    type: 'bar',
+    data: data3,
+    options: options3
 
 });
 
 var chartInstance = new Chart(chartMinima1, {
     type: 'line',
-    data: data3,
-    options: options3
+    data: data2,
+    options: options2
 });
 
-var chartInstance = new Chart(chartMoyenne1, {
-    type: 'line',
-    data: data4,
-    options: options4
-});
 
-var chartInstance = new Chart(chartEcartType1, {
-    type: 'line',
-    data: data5,
-    options: options5
-});
-
-var chartInstance = new Chart(chartMediane1, {
-    type: 'line',
-    data: data6,
-    options: options6
-});
 
 //////////////////////////////////////////////////////////END//////////////////////////////////////////////

@@ -6,7 +6,7 @@ img{
 }
 /********** START GRAPH **********/
 .wrapper {
-    width: 80%;
+    width: auto;
     height: auto;
     margin: 6em auto;
     text-align: center;
@@ -20,6 +20,23 @@ span{
     flex: 1;
     padding: 0 20px;
 }
+/*.bottom-center{
+    position: absolute;
+    bottom: 0px;
+}*/
+.temphum {
+    min-width: 100px;
+    width: 225px;
+}
+.pad{
+    padding-top: 50px;
+}
+/*.b-info{
+
+    !important
+    magin: auto;
+    text-align: center;
+}*/
 /* Smartphones (portrait) ----------- */
 @media only screen
 and (max-width : 320px) {
