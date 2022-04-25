@@ -1,3 +1,7 @@
+//
+// Library
+//
+
 var Dial = function(container) {
     this.container = container;
     this.size = this.container.dataset.size;
@@ -37,7 +41,7 @@ Dial.prototype.createDefs = function(value) {
     linearGradient.setAttribute('id', 'gradient');
 
 
-    stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    var stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
 
     if(value > 0 && value < 700){
         stop2.setAttribute('stop-color', '#48ff00');//vert
@@ -102,7 +106,7 @@ Dial.prototype.createText = function() {
     text.setAttribute('fill', '#78F8EC');
     text.setAttribute('text-anchor', 'middle');
     var tspanSize = fontSize / 3;
-    text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">PPM</tspan>';
+    text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">%</tspan>';
     this.svg.appendChild(text);
     this.text = text;
 };
@@ -134,9 +138,8 @@ Dial.prototype.animateStart = function() {
     var v = 0;
     var self = this;
     var intervalOne = setInterval(function() {
-        //var p = +(v / self.value).toFixed(2);
+        var p = +(v / self.value).toFixed(2);
         var a =3;
-        var x = 0;
         v += a;
         // Stop
         if(v >= +self.value) {
@@ -188,11 +191,4 @@ Dial.prototype.setValue = function(value) {
 
 var containers = document.getElementsByClassName("chart");
 var dial = new Dial(containers[0]);
-dial2 = new Dial(containers[1]);
-dial3 = new Dial(containers[2]);
-dial4 = new Dial(containers[3]);
-
 dial.animateStart();
-dial2.animateStart();
-dial3.animateStart();
-dial4.animateStart();
