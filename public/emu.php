@@ -2,7 +2,7 @@
 require_once("connection.php");
 
 $cpt = 0;
-$time = 10; //-> in seconds
+$time = 60*5; //-> in seconds
 
 function insert_data($local_,$type_,$dbh){
     $local = $local_;

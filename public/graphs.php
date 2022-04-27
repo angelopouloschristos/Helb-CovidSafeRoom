@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/element.loader.js"></script>
     <?php
+    session_start();
 	if (!isset($_SESSION["logged"])) {
         //echo 'connextion avec succes';
-        //header("Location : index.php");
-        //echo '<script>window.location = "index.php"</script>';
+        header("Location : index.php");
+        echo '<script>window.location = "index.php"</script>';
     }
     //partie connection avec db et instentiation des variables
     require_once("connection.php");
 
-    $stmt_loc = $dbh->prepare("SELECT * FROM Local_ ") ;
+    $stmt_loc = $dbh->prepare("SELECT * FROM local_ ") ;
     $stmt_loc->execute();
     $stmt_loc->setFetchMode(PDO::FETCH_ASSOC) ;
 
@@ -30,7 +31,7 @@
 
     $local_en_cours = 1;
     #select local
-    $stmt = $dbh->prepare("SELECT * FROM Local_ where idLocal = $local_en_cours ");
+    $stmt = $dbh->prepare("SELECT * FROM local_ where idLocal = $local_en_cours ");
     $stmt->execute();
     $local = $stmt->fetch();
     $nom_local = $local['nom'];
@@ -48,7 +49,7 @@
     $date_ppm;
     $taux_hum;
     $taux_temp;
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[0] and typeData = 3 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[0] and typeData = 3 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -60,7 +61,7 @@
         $date_ppm = $mesure['date_'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[0] and typeData = 2 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[0] and typeData = 2 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -71,7 +72,7 @@
         $taux_hum = $mesure['taux'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[0] and typeData = 1 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[0] and typeData = 1 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -105,7 +106,7 @@
     $date_ppm;
     $taux_hum;
     $taux_temp;
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[1] and typeData = 3 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[1] and typeData = 3 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -117,7 +118,7 @@
         $date_ppm = $mesure['date_'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[1] and typeData = 2 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[1] and typeData = 2 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -128,7 +129,7 @@
         $taux_hum = $mesure['taux'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[1] and typeData = 1 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[1] and typeData = 1 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -162,7 +163,7 @@
     $date_ppm;
     $taux_hum;
     $taux_temp;
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[2] and typeData = 3 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[2] and typeData = 3 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -174,7 +175,7 @@
         $date_ppm = $mesure['date_'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[2] and typeData = 2 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[2] and typeData = 2 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -185,7 +186,7 @@
         $taux_hum = $mesure['taux'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[2] and typeData = 1 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[2] and typeData = 1 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -222,7 +223,7 @@
     $date_ppm;
     $taux_hum;
     $taux_temp;
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[3] and typeData = 3 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[3] and typeData = 3 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -234,7 +235,7 @@
         $date_ppm = $mesure['date_'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[3] and typeData = 2 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[3] and typeData = 2 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     
@@ -245,7 +246,7 @@
         $taux_hum = $mesure['taux'];
     }
 
-    $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $locals_id[3] and typeData = 1 ORDER BY `Mesure`.`date_` DESC");
+    $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $locals_id[3] and typeData = 1 ORDER BY `mesure`.`date_` DESC");
     $stmt->execute();
     $mesure = $stmt->fetch();
     

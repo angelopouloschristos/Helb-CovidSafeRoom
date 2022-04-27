@@ -7,7 +7,7 @@
         require_once("connection.php");
         $local_en_cours = $_GET['localId'];
 
-        $stmt_mes = $dbh->prepare("SELECT * FROM Mesure where idLocal = $local_en_cours and typeData = 3 ORDER BY `Mesure`.`date_` DESC") ;
+        $stmt_mes = $dbh->prepare("SELECT * FROM mesure where idLocal = $local_en_cours and typeData = 3 ORDER BY `mesure`.`date_` DESC") ;
         $stmt_mes->execute();
         $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
         //juste une function pour debug car c'est impossible de write console depuis php 
@@ -24,7 +24,7 @@
             $diego[$i] = check_vide($diego[$i]);
         }
 #sfdhjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-        $stmt_mes = $dbh->prepare("SELECT * FROM Mesure where idLocal = $local_en_cours and typeData = 2 ORDER BY `Mesure`.`date_` DESC") ;
+        $stmt_mes = $dbh->prepare("SELECT * FROM mesure where idLocal = $local_en_cours and typeData = 2 ORDER BY `mesure`.`date_` DESC") ;
         $stmt_mes->execute();
         $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
         //juste une function pour debug car c'est impossible de write console depuis php 
@@ -38,7 +38,7 @@
             $christos[$i] = check_vide($christos[$i]);
         }
 #kjlsdfh;hh;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;;;saddas
-        $stmt_mes = $dbh->prepare("SELECT * FROM Mesure where idLocal = $local_en_cours and typeData = 1 ORDER BY `Mesure`.`date_` DESC") ;
+        $stmt_mes = $dbh->prepare("SELECT * FROM mesure where idLocal = $local_en_cours and typeData = 1 ORDER BY `mesure`.`date_` DESC") ;
         $stmt_mes->execute();
         $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
         //juste une function pour debug car c'est impossible de write console depuis php 
@@ -80,7 +80,7 @@
     var tem7 ='<?php echo $henry[6]; ?>';
 
 </script>
-    <meta charset="UTF-8" http-equiv="refresh" content="10">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CovidSafeRoom</title>
     <link rel="stylesheet" href="css/index.css" >
@@ -94,12 +94,12 @@
     //partie connection avec db et instentiation des variables
         
         #PPM
-        $stmt = $dbh->prepare("SELECT * FROM Local_ where idLocal = $local_en_cours ") ;
+        $stmt = $dbh->prepare("SELECT * FROM local_ where idLocal = $local_en_cours ") ;
         $stmt->execute();
         $local = $stmt->fetch();
         $nom_local = $local['nom'];
         #select mesure du local CO2/PPM
-        $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $local_en_cours and typeData = 3 ORDER BY `Mesure`.`date_` DESC") ;
+        $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $local_en_cours and typeData = 3 ORDER BY `mesure`.`date_` DESC") ;
         $stmt->execute();
         $mesure = $stmt->fetch();
         $taux_ppm;
@@ -112,7 +112,7 @@
             $date_ppm = $mesure['date_'];
         }
         //temp
-        $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $local_en_cours and typeData = 1 ORDER BY `Mesure`.`date_` DESC") ;
+        $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $local_en_cours and typeData = 1 ORDER BY `mesure`.`date_` DESC") ;
         $stmt->execute();
         $mesure = $stmt->fetch();
         $taux_temp;
@@ -125,7 +125,7 @@
             $date_temp = $mesure['date_'];
         }
         //HUM
-        $stmt = $dbh->prepare("SELECT * FROM Mesure where idLocal = $local_en_cours and typeData = 2 ORDER BY `Mesure`.`date_` DESC") ;
+        $stmt = $dbh->prepare("SELECT * FROM mesure where idLocal = $local_en_cours and typeData = 2 ORDER BY `mesure`.`date_` DESC") ;
         $stmt->execute();
         $mesure = $stmt->fetch();
         $taux_hum;
