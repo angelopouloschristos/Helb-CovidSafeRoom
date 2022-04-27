@@ -16,8 +16,14 @@
         echo '<script>window.location = "index.php"</script>';
     }
 
+
+
     //partie connection avec db et instentiation des variables
     require_once("connection.php");
+
+
+        include('emu.php');
+
         $stmt_batiment = $dbh->prepare("SELECT * FROM batiment ") ;
         $stmt_batiment->execute();
 

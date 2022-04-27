@@ -10,8 +10,8 @@
     <?php
 	if (!isset($_SESSION["logged"])) {
         //echo 'connextion avec succes';
-        header("Location : index.php");
-        echo '<script>window.location = "index.php"</script>';
+        //header("Location : index.php");
+        //echo '<script>window.location = "index.php"</script>';
     }
     //partie connection avec db et instentiation des variables
     require_once("connection.php");
