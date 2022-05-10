@@ -26,9 +26,14 @@ Dial.prototype.create = function(value) {
 
 Dial.prototype.createSvg = function() {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute('width', this.size + 'px');
-    svg.setAttribute('height', this.size + 'px');
+    //svg.setAttribute('width', this.size + 'px');
+    //svg.setAttribute('height', this.size + 'px');
+    svg.setAttribute('preservedAspectRatio', 'xMinYMin meet')
+    svg.setAttribute('viewBox', '0 0 300 300')
+    //svg.setAttribute('stop-color', '#ffc0cb');
+
     this.svg = svg;
+
 };
 
 Dial.prototype.createDefs = function(value) {
@@ -146,6 +151,17 @@ Dial.prototype.animateStart = function() {
         self.setValue(v);
     }, 10);
 };
+Dial.prototype.setValue = function(value) {
+    var c = (value / 900) * 360;
+    if(c === 360)
+        c = 359.99;
+    var xy = this.size / 2 - this.strokeWidth / 2;
+
+    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
+    this.slice.setAttribute('d', d);
+    var tspanSize = (this.size / 3.5) / 3;
+    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">PPM</tspan>';
+};
 //fkjdhwswwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsw
 Dial.prototype.animateStart2 = function() {
     var v = 0;
@@ -163,6 +179,7 @@ Dial.prototype.animateStart2 = function() {
         self.setValue2(v,100);
     }, 10);
 };
+////////////////////////////////////////ACTUELLEMENT LE TROISIEME COMPTEUR/////////////////////////
 Dial.prototype.setValue2 = function(value,max) {
     var c = (value / max) * 360;
     if(c === 360)
@@ -172,7 +189,7 @@ Dial.prototype.setValue2 = function(value,max) {
     var d = this.describeArc(xy, xy, xy, 180, 180 + c);
     this.slice.setAttribute('d', d);
     var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
+    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">°C</tspan>';
 
 };
 Dial.prototype.animateStart3 = function() {
@@ -188,11 +205,13 @@ Dial.prototype.animateStart3 = function() {
             v = self.value;
             clearInterval(intervalOne);
         }
-        self.setValue2(v,50);
+        self.setValue3(v,50);
     }, 10);
 };
-Dial.prototype.setValue3 = function(value,max) {
-    var c = (value / max) * 360;
+////////////////////////////////////////ACTUELLEMENT LE DEUXIEME COMPTEUR/////////////////////////
+
+Dial.prototype.setValue3 = function(value) {
+    var c = (value / 900) * 360;
     if(c === 360)
         c = 359.99;
     var xy = this.size / 2 - this.strokeWidth / 2;
@@ -200,8 +219,8 @@ Dial.prototype.setValue3 = function(value,max) {
     var d = this.describeArc(xy, xy, xy, 180, 180 + c);
     this.slice.setAttribute('d', d);
     var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
-}
+    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">%HR</tspan>';
+};
 //fkjdhwswwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsw
 
 Dial.prototype.animateReset = function() {
@@ -227,17 +246,7 @@ Dial.prototype.describeArc = function(x, y, radius, startAngle, endAngle){
     return d;
 }
 
-Dial.prototype.setValue = function(value) {
-    var c = (value / 900) * 360;
-    if(c === 360)
-        c = 359.99;
-    var xy = this.size / 2 - this.strokeWidth / 2;
 
-    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
-    this.slice.setAttribute('d', d);
-    var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
-};
 
 //
 // Usage
@@ -250,6 +259,6 @@ dial3 = new Dial(containers[2]);
 dial4 = new Dial(containers[3]);
 
 dial.animateStart();
-dial2.animateStart3();
-dial3.animateStart2();
+dial2.animateStart2();
+dial3.animateStart3();
 dial4.animateStart();

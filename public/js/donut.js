@@ -26,8 +26,13 @@ Dial.prototype.create = function(value) {
 
 Dial.prototype.createSvg = function() {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute('width', this.size + 'px');
-    svg.setAttribute('height', this.size + 'px');
+    //svg.setAttribute('width', this.size + 'px');
+    //svg.setAttribute('height', this.size + 'px');
+    svg.setAttribute('preservedAspectRatio', 'xMinYMin meet')
+    svg.setAttribute('viewBox', '0 0 300 300')
+    //svg.setAttribute('stop-color', '#ffc0cb');
+    
+
     this.svg = svg;
 };
 
@@ -41,12 +46,17 @@ Dial.prototype.createDefs = function(value) {
 
     if(value > 0 && value < 700){
         stop2.setAttribute('stop-color', '#48ff00');//vert
+        console.log(value);
     }
     if(value > 700 && value < 900){
         stop2.setAttribute('stop-color', '#fff700');//jaune
+        console.log(value);
+
     }
     if(value > 900){
         stop2.setAttribute('stop-color', '#ff005d');//rouge
+        console.log(value);
+
     }
 
 
@@ -196,3 +206,6 @@ dial.animateStart();
 dial2.animateStart();
 dial3.animateStart();
 dial4.animateStart();
+
+const width = document.querySelector('#svgbox').offsetWidth
+console.log("Largeur de la div = " + width)

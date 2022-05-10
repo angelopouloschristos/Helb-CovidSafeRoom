@@ -24,10 +24,14 @@ span{
     position: absolute;
     bottom: 0px;
 }*/
-.temphum {
+#taux-temp, #taux-hum{
+    max-width: 50%;
+    color: white;
+}
+/*.temphum {
     min-width: 100px;
     width: 225px;
-}
+}*/
 .pad{
     padding-top: 50px;
 }
@@ -37,9 +41,41 @@ span{
     magin: auto;
     text-align: center;
 }*/
+#chartDataLocal1,#chartMinimaLocal1, #chartMaximaLocal1{
+    max-height: 300px;
+    max-width: 600px;
+}
+#svgbox{
+    max-width: 300px;
+}
 /* Smartphones (portrait) ----------- */
 @media only screen
 and (max-width : 320px) {
 
 }
+@media only screen and (max-width: 480px) {
+    /* For mobile phones: */
+    #cadre{
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;.
+        width: 50% !important;
+        /*transform: translateX(50%) !important;
+        left: 50% !important;*/
+/****************************************   DERNIERS CHANGEMENTS ICI, TESTER RESPONSIVE AVEC MAX WIDTH */
+    }
+    #svgbox{
+        margin: auto !important;
+    }
+    canvas{
+        width: 90% !important;
+    }
+    .aspect-ratio{
+        padding-left: 50px !important;
+    }
+    /*svg{
+        width: 50% !important;
+    }*/
+    }
+
 /********** END GRAPH **********/

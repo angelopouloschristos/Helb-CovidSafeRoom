@@ -4,6 +4,7 @@
 // ============================================
 
 //////////////////////////////////////////////////////DEFINE CHART 1//////////////////////////////////////////////////////////////////////////////////
+Chart.defaults.global.defaultFontColor = "#fff";
 
 var chartData1 = document.getElementById('chartDataLocal1').getContext('2d'),
     gradient1 = chartData1.createLinearGradient(0, 0, 0, 450);
@@ -72,13 +73,13 @@ gradient6.addColorStop(1, 'rgba(255, 0, 0, 0)');
 //////////////////////////////////////////////////////DATA 1//////////////////////////////////////////////////////////////////////////////////
     var dt = new Date();
     var day = dt.getDay();
-    function getDay(let) 
+    function getDay(getIt)
     {
-        if (let<1) {
-            let = let+7;
+        if (getIt<1) {
+            getIt = getIt+7;
         }
 
-        switch (let) {
+        switch (getIt) {
             case 1:
                 return 'Lundi';
             case 2:
@@ -108,6 +109,7 @@ var data1  = {
         borderColor: '#00b148',
         hoverBackgroundColor: '#00b148',
         data: [day7, day6, day5, day4, day3, day2, day1 ]
+
     }]
 };
 //////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
@@ -145,8 +147,8 @@ var data3  = {
 
 //////////////////////////////////////////////////////GRAPHIC OPTION 1//////////////////////////////////////////////////////////////////////////////////
 var options1 = {
-    responsive: false,
-    maintainAspectRatio: true,
+    responsive: true,
+    maintainAspectRatio: false,
     animation: {
         easing: 'easeInOutQuad',
         duration: 520
@@ -154,13 +156,15 @@ var options1 = {
     scales: {
         xAxes: [{
             gridLines: {
-                color: 'rgba(200, 200, 200, 0.05)',
+                //color: 'rgba(200, 200, 200, 0.05)',
+                color: 'rgba(255, 255, 255, 0.05)',
                 lineWidth: 1
             }
         }],
         yAxes: [{
             gridLines: {
-                color: 'rgba(200, 200, 200, 0.08)',
+                //color: 'rgba(200, 200, 200, 0.08)',
+                color: 'rgba(255, 255, 255, 0.08)',
                 lineWidth: 1
             }
         }]
@@ -197,8 +201,8 @@ var options1 = {
 
 //////////////////////////////////////////////////////GRAPHIC OPTION 2//////////////////////////////////////////////////////////////////////////////////
 var options2 = {
-    responsive: false,
-    maintainAspectRatio: true,
+    responsive: true,
+    maintainAspectRatio: false,
     animation: {
         easing: 'easeInOutQuad',
         duration: 520
@@ -206,13 +210,16 @@ var options2 = {
     scales: {
         xAxes: [{
             gridLines: {
-                color: 'rgba(200, 200, 200, 0.05)',
+                //color: 'rgba(200, 200, 200, 0.05)',
+                color: 'rgba(255, 255, 255, 0.05)',
                 lineWidth: 1
             }
         }],
         yAxes: [{
             gridLines: {
-                color: 'rgba(200, 200, 200, 0.08)',
+                //color: 'rgba(200, 200, 200, 0.08)',
+                color: 'rgba(255, 255, 255, 0.08)',
+
                 lineWidth: 1
             }
         }]
@@ -247,8 +254,8 @@ var options2 = {
 
 //////////////////////////////////////////////////////GRAPHIC OPTION 3//////////////////////////////////////////////////////////////////////////////////
 var options3 = {
-    responsive: false,
-    maintainAspectRatio: true,
+    responsive: true,
+    maintainAspectRatio: false,
     animation: {
         easing: 'easeInOutQuad',
         duration: 520

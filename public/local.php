@@ -146,26 +146,30 @@
 <div class="d-flex justify-content-around">
     <h1>Local <?php echo $nom_local ?></h1>
 </div>
-<div class="d-flex justify-content-around">
+<div id="cadre" class="d-flex justify-content-around pad">
+    <div id="svgbox" class="d-flex flex-column border border-primary rounded">
     <div class="wrapper">
         <div class="container chart" data-size="300" data-value="<?php echo $taux_ppm;?>" data-arrow="up">
             <span style="font-size: 1.6em"><?php echo $date_ppm;?><br> Taux de Co2</span>
             <br>
         </div>
     </div>
-
+    </div>
+    <div id="svgbox" class="d-flex flex-column border border-primary rounded">
     <div class="wrapper">
         <div class="container chart" data-size="300" data-value=" <?php if($taux_temp<0){echo 0;}else{echo $taux_temp;} ?> " data-arrow="up">
-            <span style="font-size: 1.6em"><?php echo $date_temp;?><br> <?php if($taux_temp<0){echo "Error Temperature negatif";}else{echo "Temperature";} ?></span>
+            <span style="font-size: 1.6em"><?php echo $date_temp;?><br> <?php if($taux_temp<0){echo "Error Temperature négative";}else{echo "Temperature";} ?></span>
             <br>
         </div>
     </div>
-
+    </div>
+    <div id="svgbox" class="d-flex flex-column border border-primary rounded">
     <div class="wrapper">
         <div class="container chart" data-size="300" data-value=" <?php echo $taux_hum; ?> " data-arrow="up">
             <span style="font-size: 1.6em"><?php echo $date_hum;?><br>Humidité</span>
             <br>
         </div>
+    </div>
     </div>
     <div class="wrapper" style="display: none;">
         <div class="container chart" data-size="300" data-value=" <?php echo 0; ?> " data-arrow="up">
@@ -180,18 +184,18 @@
 <div class="d-flex justify-content-center">
     <div class="line-chart">
         <div class="aspect-ratio">
-            <canvas id="chartDataLocal1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
-            <canvas id="chartMaximaLocal1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
-            <canvas id="chartMinimaLocal1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
+            <canvas id="chartDataLocal1" style="display: inline-block; width: 600px; height: 300px;"></canvas>
+            <canvas id="chartMaximaLocal1" style="display: inline-block; width: 600px; height: 300px;"></canvas>
+            <canvas id="chartMinimaLocal1" style="display: inline-block; width: 600px; height: 300px;"></canvas>
         </div>
     </div>
 </div>
 
 <!------------------------------------                 BOTTOM ROW              --------------------------------->
-<div class="d-flex justify-content-center">
+<div id="chart-ratio" class="d-flex justify-content-center">
     <div class="line-chart">
         <div class="aspect-ratio">
-            <canvas id="chartMoyenne1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
+            <canvas id="chartMoyenne1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300";></canvas>
             <canvas id="chartEcartType1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
             <canvas id="chartMediane1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
         </div>
