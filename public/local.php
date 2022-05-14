@@ -19,7 +19,7 @@ use function PHPUnit\Framework\isNull;
         $chart = $selected;
 
         if ($chart=='max' || empty($chart)) {
-            $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) DESC ") ;
+            $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) ORDER BY date(date_) DESC ") ;
             $stmt_mes->execute();
             $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
             //juste une function pour debug car c'est impossible de write console depuis php 
@@ -38,7 +38,7 @@ use function PHPUnit\Framework\isNull;
                 $diego[$i] = check_vide($diego[$i]);
             }
     #sfdhjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) desc") ;
+            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) ORDER BY date(date_) DESC") ;
             $stmt_mes->execute();
             $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
             //juste une function pour debug car c'est impossible de write console depuis php 
@@ -53,7 +53,7 @@ use function PHPUnit\Framework\isNull;
                 $christos[$i] = check_vide($christos[$i]);
             }
     #kjlsdfh;hh;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;;;saddas
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) desc") ;
+            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) ORDER BY date(date_) DESC") ;
             $stmt_mes->execute();
             $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
             //juste une function pour debug car c'est impossible de write console depuis php 
@@ -70,7 +70,7 @@ use function PHPUnit\Framework\isNull;
             $title_chart = 'Maximum';
     
         }else {
-            $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) DESC ") ;
+            $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) ORDER BY date(date_) DESC ") ;
             $stmt_mes->execute();
             $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
             //juste une function pour debug car c'est impossible de write console depuis php 
@@ -89,7 +89,7 @@ use function PHPUnit\Framework\isNull;
                 $diego[$i] = check_vide($diego[$i]);
             }
     #sfdhjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) desc") ;
+            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) ORDER BY date(date_) DESC") ;
             $stmt_mes->execute();
             $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
             //juste une function pour debug car c'est impossible de write console depuis php 
@@ -104,7 +104,7 @@ use function PHPUnit\Framework\isNull;
                 $christos[$i] = check_vide($christos[$i]);
             }
     #kjlsdfh;hh;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;;;saddas
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) desc") ;
+            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) ORDER BY date(date_) DESC") ;
             $stmt_mes->execute();
             $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
             //juste une function pour debug car c'est impossible de write console depuis php 
