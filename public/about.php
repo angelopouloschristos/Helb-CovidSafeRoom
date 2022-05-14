@@ -13,10 +13,7 @@
 <!-- Loaded header via JS-->
 <div id="header"></div>
 
-<?php
-    session_start();
-    session_destroy();
-?>
+
 
 <!-- START DIV PARENT -->
 <div id="parent-container">

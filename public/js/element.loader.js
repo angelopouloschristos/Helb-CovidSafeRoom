@@ -20,10 +20,8 @@ window.onload = function ()
         "                    <li class=\"nav-item\">\n" +
         "                        <a class=\"nav-link\" href=\"about.php\">About</a>\n" +
         "                    </li>\n" +
-        "                    <li class=\"nav-item\">\n" +
-        "                        <a class=\"nav-link\" href=\"db.php\">Data Base</a>\n" +
-        "                    </li>\n" +
         "                </ul>\n" +
+        "                        <a class=\"nav-link\" href=\"logout.php\" >Deconnexion</a>" +
         "            </div>\n" +
         "        </div>\n" +
         "    </nav>\n" +

@@ -1,5 +1,6 @@
 <?php
 require_once("connection.php");
+date_default_timezone_set('Europe/Brussels');
 
 $taux = $_GET["taux"];
 $type = $_GET["type"];

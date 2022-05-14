@@ -24,7 +24,6 @@ require_once("connection.php");
 if (isset($_SESSION["logged"])) {
     //echo 'connextion avec succes';
     if ($_SESSION["logged"] == true) {
-        header("Location : index.php");
         echo '<script>window.location = "graphs.php"</script>';
     }
     

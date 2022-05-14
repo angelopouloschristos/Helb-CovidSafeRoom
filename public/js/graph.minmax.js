@@ -71,36 +71,10 @@ gradient6.addColorStop(1, 'rgba(255, 0, 0, 0)');
 //////////////////////////////////////////////////////END//////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////DATA 1//////////////////////////////////////////////////////////////////////////////////
-    var dt = new Date();
-    var day = dt.getDay();
-    function getDay(getIt)
-    {
-        if (getIt<1) {
-            getIt = getIt+7;
-        }
-
-        switch (getIt) {
-            case 1:
-                return 'Lundi';
-            case 2:
-                return 'Mardi';
-            case 3:
-                return 'Mercredi';
-            case 4:
-                return 'Jeudi';
-            case 5:
-                return 'Ventredi';
-            case 6:
-                return 'Samedi';
-            case 7:
-                return 'Dimanche';
-
-            default:
-                break;
-        }
-    }
+    
+    
 var data1  = {
-    labels: [ ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+    labels: [ d6, d5, d4, d3, d2, d1, d0 ],
     datasets: [{
         label: 'PPM',
         backgroundColor: gradient1,
@@ -116,7 +90,7 @@ var data1  = {
 
 //////////////////////////////////////////////////////DATA 2//////////////////////////////////////////////////////////////////////////////////
 var data2  = {
-    labels: [ ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+    labels: [ t6, t5, t4, t3, t2, t1, t0 ],
     datasets: [{
         label: '%',
         backgroundColor: gradient2,
@@ -131,7 +105,7 @@ var data2  = {
 
 //////////////////////////////////////////////////////DATA 3//////////////////////////////////////////////////////////////////////////////////
 var data3  = {
-    labels: [ ' ', ' ', ' ', ' ', ' ', ' ', ' ' ],
+    labels: [ h6, h5, h4, h3, h2, h1, h0 ],
     datasets: [{
         label: '°C',
         backgroundColor: gradient3,
@@ -192,7 +166,7 @@ var options1 = {
 
     title: {
         display: true,
-        text: 'Les derniers mesures de Co2',
+        text: 'Les '+title_chart+' de Co2',
     }
 
 
@@ -246,7 +220,7 @@ var options2 = {
     },
     title: {
         display: true,
-        text: 'Les derniers mesures de Humidité'
+        text: 'Les '+title_chart+' de Humidité'
     }
 
 };
@@ -296,7 +270,7 @@ var options3 = {
     },
     title: {
         display: true,
-        text: 'Les derniers mesures de Temperature'
+        text: 'Les '+title_chart+' de Temperature'
     }
 
 };
@@ -312,7 +286,7 @@ var chartInstance = new Chart(chartData1, {
 });
 
 var chartInstance = new Chart(chartMaxima1, {
-    type: 'bar',
+    type: 'line',
     data: data3,
     options: options3
 

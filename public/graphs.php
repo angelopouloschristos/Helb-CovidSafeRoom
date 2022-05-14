@@ -11,7 +11,7 @@
     session_start();
 	if (!isset($_SESSION["logged"])) {
         //echo 'connextion avec succes';
-        header("Location : index.php");
+        //header("Location : index.php");
         echo '<script>window.location = "index.php"</script>';
     }
     //partie connection avec db et instentiation des variables
