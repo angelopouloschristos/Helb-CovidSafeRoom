@@ -4,7 +4,6 @@
 <?php
         //si tu veut voir les warnings ou les log pendent les error -> mets la ligne suivante en commantaire
 
-use function PHPUnit\Framework\isNull;
 
         error_reporting(E_ERROR | E_PARSE);
         require_once("connection.php");
@@ -18,116 +17,150 @@ use function PHPUnit\Framework\isNull;
         $local_en_cours = $_GET['localId'];
         $chart = $selected;
 
-        if ($chart=='max' || empty($chart)) {
-            $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) ORDER BY date(date_) DESC ") ;
-            $stmt_mes->execute();
-            $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
-            //juste une function pour debug car c'est impossible de write console depuis php 
-            //on remplis un tab avec les valeurs de la requete
-            $cpt = 0;
-            foreach ($stmt_mes as $item) {
-                //printf(' / '.$item['jour']);
-                $diego[$cpt] = $item['taux_max'];
-                $days[$cpt] = $item['jour']; 
-                $cpt++;
-            }
-            function check_vide($item){
-                return $item  ?? 0;
-            }
-            for ($i=0; $i < 7; $i++) { 
-                $diego[$i] = check_vide($diego[$i]);
-            }
-    #sfdhjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) ORDER BY date(date_) DESC") ;
-            $stmt_mes->execute();
-            $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
-            //juste une function pour debug car c'est impossible de write console depuis php 
-            //on remplis un tab avec les valeurs de la requete
-            $cpt = 0;
-            foreach ($stmt_mes as $item) {
-                $christos[$cpt] = $item['taux_max'];
-                $dayt[$cpt] = $item['jour'];
-                $cpt++;
-            }
-            for ($i=0; $i < 7; $i++) { 
-                $christos[$i] = check_vide($christos[$i]);
-            }
-    #kjlsdfh;hh;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;;;saddas
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) ORDER BY date(date_) DESC") ;
-            $stmt_mes->execute();
-            $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
-            //juste une function pour debug car c'est impossible de write console depuis php 
-            //on remplis un tab avec les valeurs de la requete
-            $cpt = 0;
-            foreach ($stmt_mes as $item) {
-                $henry[$cpt] = $item['taux_max'];
-                $dayh[$cpt] = $item['jour'];
-                $cpt++;
-            }
-            for ($i=0; $i < 7; $i++) { 
-                $henry[$i] = check_vide($henry[$i]);
-            }
-            $title_chart = 'Maximum';
     
-        }else {
-            $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) ORDER BY date(date_) DESC ") ;
-            $stmt_mes->execute();
-            $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
-            //juste une function pour debug car c'est impossible de write console depuis php 
-            //on remplis un tab avec les valeurs de la requete
-            $cpt = 0;
-            foreach ($stmt_mes as $item) {
-                //printf(' / '.$item['jour']);
-                $diego[$cpt] = $item['taux_max'];
-                $days[$cpt] = $item['jour']; 
-                $cpt++;
-            }
-            function check_vide($item){
-                return $item  ?? 0;
-            }
-            for ($i=0; $i < 7; $i++) { 
-                $diego[$i] = check_vide($diego[$i]);
-            }
-    #sfdhjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) ORDER BY date(date_) DESC") ;
-            $stmt_mes->execute();
-            $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
-            //juste une function pour debug car c'est impossible de write console depuis php 
-            //on remplis un tab avec les valeurs de la requete
-            $cpt = 0;
-            foreach ($stmt_mes as $item) {
-                $christos[$cpt] = $item['taux_max'];
-                $dayt[$cpt] = $item['jour'];
-                $cpt++;
-            }
-            for ($i=0; $i < 7; $i++) { 
-                $christos[$i] = check_vide($christos[$i]);
-            }
-    #kjlsdfh;hh;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;;;saddas
-            $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) ORDER BY date(date_) DESC") ;
-            $stmt_mes->execute();
-            $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
-            //juste une function pour debug car c'est impossible de write console depuis php 
-            //on remplis un tab avec les valeurs de la requete
-            $cpt = 0;
-            foreach ($stmt_mes as $item) {
-                $henry[$cpt] = $item['taux_max'];
-                $dayh[$cpt] = $item['jour'];
-                $cpt++;
-            }
-            for ($i=0; $i < 7; $i++) { 
-                $henry[$i] = check_vide($henry[$i]);
-            }
-            $title_chart = 'Minimum';
+        $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) ORDER BY date(date_) DESC ") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            //printf(' / '.$item['jour']);
+            $diego[$cpt] = $item['taux_max'];
+            $days[$cpt] = $item['jour']; 
+            $cpt++;
+        }
+        function check_vide($item){
+            return $item  ?? 0;
+        }
+        for ($i=0; $i < 7; $i++) { 
+            $diego[$i] = check_vide($diego[$i]);
+        }
+#sfdhjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+        $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) ORDER BY date(date_) DESC") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            $christos[$cpt] = $item['taux_max'];
+            $dayt[$cpt] = $item['jour'];
+            $cpt++;
+        }
+        for ($i=0; $i < 7; $i++) { 
+            $christos[$i] = check_vide($christos[$i]);
+        }
+#kjlsdfh;hh;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;;;saddas
+        $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, max(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) ORDER BY date(date_) DESC") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            $henry[$cpt] = $item['taux_max'];
+            $dayh[$cpt] = $item['jour'];
+            $cpt++;
+        }
+        for ($i=0; $i < 7; $i++) { 
+            $henry[$i] = check_vide($henry[$i]);
+        }
 
-        } 
+        $stmt_mes = $dbh->prepare("SELECT date(date_) as jour,min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 3 GROUP BY date(date_) ORDER BY date(date_) DESC ") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            //printf(' / '.$item['jour']);
+            $diego1[$cpt] = $item['taux_max'];
+            $cpt++;
+        }
+        for ($i=0; $i < 7; $i++) { 
+            $diego1[$i] = check_vide($diego1[$i]);
+        }
+#sfdhjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+        $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) ORDER BY date(date_) DESC") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            $christos1[$cpt] = $item['taux_max'];
+            $cpt++;
+        }
+        for ($i=0; $i < 7; $i++) { 
+            $christos1[$i] = check_vide($christos1[$i]);
+        }
+#kjlsdfh;hh;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;h;;;saddas
+        $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, min(taux) as taux_max FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) ORDER BY date(date_) DESC") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            $henry1[$cpt] = $item['taux_max'];
+            $cpt++;
+        }
+        for ($i=0; $i < 7; $i++) { 
+            $henry1[$i] = check_vide($henry1[$i]);
+        }
         
+        $title_chart = 'dernieres mesures';
+        ///////GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+        //CO2
+        $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, avg(taux) as moyenne FROM mesure where idLocal = $local_en_cours and typeData = 3 group by date(date_) ORDER BY date(date_) DESC;") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            $cm[$cpt] = $item['moyenne'];
+            $cpt++;
+        }
+        for ($i=0; $i < $cpt; $i++) { 
+            $cm[$i] = check_vide($cm[$i]);
+        }
         
+        //hum
+        $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, avg(taux) as moyenne FROM mesure where idLocal = $local_en_cours and typeData = 2 group by date(date_) ORDER BY date(date_) DESC;") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            $hm[$cpt] = $item['moyenne'];
+            $cpt++;
+        }
+        for ($i=0; $i < $cpt; $i++) { 
+            $hm[$i] = check_vide($hm[$i]);
+        }
 
-        
+        //temp
+        $stmt_mes = $dbh->prepare("SELECT date(date_)as jour, avg(taux) as moyenne FROM mesure where idLocal = $local_en_cours and typeData = 1 group by date(date_) ORDER BY date(date_) DESC;") ;
+        $stmt_mes->execute();
+        $stmt_mes->setFetchMode(PDO::FETCH_ASSOC) ;
+        //juste une function pour debug car c'est impossible de write console depuis php 
+        //on remplis un tab avec les valeurs de la requete
+        $cpt = 0;
+        foreach ($stmt_mes as $item) {
+            $tm[$cpt] = $item['moyenne'];
+            $cpt++;
+        }
+        for ($i=0; $i < $cpt; $i++) { 
+            $tm[$i] = check_vide($tm[$i]);
+        }
+
     ?>
 <script>
     //CO2
+   
     var day1 ='<?php echo $diego[0]; ?>';
     var day2 ='<?php echo $diego[1]; ?>';
     var day3 ='<?php echo $diego[2]; ?>';
@@ -144,6 +177,22 @@ use function PHPUnit\Framework\isNull;
     var d5 = '<?php echo $days[5]; ?>';
     var d6 = '<?php echo $days[6]; ?>';
 
+    var day11 ='<?php echo $diego1[0]; ?>';
+    var day21 ='<?php echo $diego1[1]; ?>';
+    var day31 ='<?php echo $diego1[2]; ?>';
+    var day41 ='<?php echo $diego1[3]; ?>';
+    var day51 ='<?php echo $diego1[4]; ?>';
+    var day61 ='<?php echo $diego1[5]; ?>';
+    var day71 ='<?php echo $diego1[6]; ?>';
+
+    var cm1 ='<?php echo $cm[0]; ?>';
+    var cm2 ='<?php echo $cm[1]; ?>';
+    var cm3='<?php echo $cm[2]; ?>';
+    var cm4 ='<?php echo $cm[3]; ?>';
+    var cm5 ='<?php echo $cm[4]; ?>';
+    var cm6 ='<?php echo $cm[5]; ?>';
+    var cm7 ='<?php echo $cm[6]; ?>';
+
     //HUM
     var hum1 ='<?php echo $christos[0]; ?>';
     var hum2 ='<?php echo $christos[1]; ?>';
@@ -153,6 +202,14 @@ use function PHPUnit\Framework\isNull;
     var hum6 ='<?php echo $christos[5]; ?>';
     var hum7 ='<?php echo $christos[6]; ?>';
 
+    var hm1 ='<?php echo $hm[0]; ?>';
+    var hm2 ='<?php echo $hm[1]; ?>';
+    var hm3 ='<?php echo $hm[2]; ?>';
+    var hm4 ='<?php echo $hm[3]; ?>';
+    var hm5 ='<?php echo $hm[4]; ?>';
+    var hm6 ='<?php echo $hm[5]; ?>';
+    var hm7 ='<?php echo $hm[6]; ?>';
+
     var h0 = '<?php echo $dayh[0]; ?> ';
     var h1 = '<?php echo $dayh[1]; ?> ';
     var h2 = '<?php echo $dayh[2]; ?> ';
@@ -160,6 +217,14 @@ use function PHPUnit\Framework\isNull;
     var h4 = '<?php echo $dayh[4]; ?> ';
     var h5 = '<?php echo $dayh[5]; ?> ';
     var h6 = '<?php echo $dayh[6]; ?> ';
+
+    var hum11 ='<?php echo $christos1[0]; ?>';
+    var hum21 ='<?php echo $christos1[1]; ?>';
+    var hum31 ='<?php echo $christos1[2]; ?>';
+    var hum41 ='<?php echo $christos1[3]; ?>';
+    var hum51 ='<?php echo $christos1[4]; ?>';
+    var hum61 ='<?php echo $christos1[5]; ?>';
+    var hum71 ='<?php echo $christos1[6]; ?>';
 
 
     //TEMP
@@ -171,6 +236,14 @@ use function PHPUnit\Framework\isNull;
     var tem6 ='<?php echo $henry[5]; ?>';
     var tem7 ='<?php echo $henry[6]; ?>';
 
+    var tm1 ='<?php echo $tm[0]; ?>';
+    var tm2 ='<?php echo $tm[1]; ?>';
+    var tm3 ='<?php echo $tm[2]; ?>';
+    var tm4 ='<?php echo $tm[3]; ?>';
+    var tm5 ='<?php echo $tm[4]; ?>';
+    var tm6 ='<?php echo $tm[5]; ?>';
+    var tm7 ='<?php echo $tm[6]; ?>';
+
 
     var t0 = '<?php echo $dayt[0]; ?> ';
     var t1 = '<?php echo $dayt[1]; ?> ';
@@ -179,6 +252,14 @@ use function PHPUnit\Framework\isNull;
     var t4 = '<?php echo $dayt[4]; ?> ';
     var t5 = '<?php echo $dayt[5]; ?> ';
     var t6 = '<?php echo $dayt[6]; ?> ';
+
+    var tem11 ='<?php echo $henry1[0]; ?>';
+    var tem21 ='<?php echo $henry1[1]; ?>';
+    var tem31 ='<?php echo $henry1[2]; ?>';
+    var tem41 ='<?php echo $henry1[3]; ?>';
+    var tem51 ='<?php echo $henry1[4]; ?>';
+    var tem61 ='<?php echo $henry1[5]; ?>';
+    var tem71 ='<?php echo $henry1[6]; ?>';
 
     
     var title_chart = '<?php echo $title_chart; ?> ';
@@ -192,6 +273,7 @@ use function PHPUnit\Framework\isNull;
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/element.loader.js"></script>
     <script type="text/javascript" src="js/graph.minmax.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -286,38 +368,165 @@ use function PHPUnit\Framework\isNull;
 
 <!------------------------------------                 TOP ROW              --------------------------------->
 
+
 <div class="d-flex justify-content-center">
-    <div class="line-chart">
-        <div class="aspect-ratio">
-            <canvas id="chartDataLocal1" style="display: inline-block; width: 600px; height: 300px;"></canvas>
-            <canvas id="chartMaximaLocal1" style="display: inline-block; width: 600px; height: 300px;"></canvas>
-            <canvas id="chartMinimaLocal1" style="display: inline-block; width: 600px; height: 300px;"></canvas>
-        </div>
-        <form action="" method="post">
-            <select name="time" id="time">
-                <option value="max">Maximum</option>
-                <option value="min">Minimum</option>
-            </select>
-            <input class="btn btn-danger" type="submit" name="submit" vlaue="Choose options">
-        </form>
-
+    <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+        <canvas id="myChart1"></canvas>
     </div>
-</div>
-
-<!------------------------------------                 BOTTOM ROW              --------------------------------->
-<div id="chart-ratio" class="d-flex justify-content-center">
-    <div class="line-chart">
-        <div class="aspect-ratio">
-            <canvas id="chartMoyenne1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300";></canvas>
-            <canvas id="chartEcartType1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
-            <canvas id="chartMediane1" style="display: inline-block; width: 600px; height: 300px;" width="600" height="300"></canvas>
-        </div>
+    <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+        <canvas id="myChartTemp"></canvas>
+    </div>
+    <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+        <canvas id="myChartHum"></canvas>
     </div>
 </div>
 
 
 
 </div>
+
+<script>
+
+const data = {
+  labels: [d6, d5, d4, d3, d2, d1, d0],
+  datasets: [
+    {
+      label: 'Maximum',
+      data: [day7, day6, day5, day4, day3, day2, day1 ],
+      borderColor: '#ff0000',//red
+      backgroundColor: '#ff0000',
+    },
+    {
+      label: 'Minimum',
+      data: [day71, day61, day51, day41, day31, day21, day11 ],
+      borderColor: '#ecfc00',//yellow
+      backgroundColor: '#ecfc00',
+    },
+    {
+      label: 'Moyenne',
+      data: [cm7, cm6, cm5, cm4, cm3, cm2, cm1 ],
+      borderColor: '#fc7e00',//orange
+      backgroundColor: '#fc7e00',
+    }
+  ]
+};
+
+const dataTemp = {
+  labels: [ h6, h5, h4, h3, h2, h1, h0 ],
+  datasets: [
+    {
+      label: 'Maximum',
+      data: [tem7, tem6, tem5, tem4, tem3, tem2, tem1],
+      borderColor: '#ff0000',//red
+      backgroundColor: '#ff0000',
+    },
+    {
+      label: 'Minimum',
+      data: [tem71, tem61, tem51, tem41, tem3, tem2, tem1],
+      borderColor: '#ecfc00',//yellow
+      backgroundColor: '#ecfc00',
+    },
+    {
+      label: 'Moyenne',
+      data: [tm7, tm6, tm5, tm4, tm3, tm2, tm1 ],
+      borderColor: '#fc7e00',//orange
+      backgroundColor: '#fc7e00',
+    }
+  ]
+};
+const dataHum = {
+  labels: [ t6, t5, t4, t3, t2, t1, t0 ],
+  datasets: [
+    {
+      label: 'Maximum',
+      data: [hum7, hum6, hum5, hum4, hum3, hum2, hum1],
+      borderColor: '#ff0000',//red
+      backgroundColor: '#ff0000',
+    },
+    {
+      label: 'Minimum',
+      data: [hum71, hum61, hum51, hum41, hum31, hum21, hum11],
+      borderColor: '#ecfc00',//yellow
+      backgroundColor: '#ecfc00',
+    },
+    {
+      label: 'Moyenne',
+      data: [hm7, hm6, hm5, hm4, hm3, hm2, hm1 ],
+      borderColor: '#fc7e00',//orange
+      backgroundColor: '#fc7e00',
+    }
+  ]
+};
+
+
+const config = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      title: {
+        display: true,
+        text: 'Graphiques Co2'
+      }
+    },
+  },
+};
+const configTemp = {
+  type: 'line',
+  data: dataTemp,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      title: {
+        display: true,
+        text: 'Graphiques Temperature'
+      }
+    }
+  },
+};
+const configHum = {
+  type: 'line',
+  data: dataHum,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      title: {
+        display: true,
+        text: 'Graphiques Humidite'
+      }
+    }
+  },
+};
+
+var myChart1 = new Chart(
+    document.getElementById('myChart1'),
+    config
+);
+
+var myChart2 = new Chart(
+    document.getElementById('myChartTemp'),
+    configTemp
+);
+var myChart2 = new Chart(
+    document.getElementById('myChartHum'),
+    configHum
+);
+
+</script>
+
+
+
+
 </body>
 
 <!-- Optional JavaScript -->
