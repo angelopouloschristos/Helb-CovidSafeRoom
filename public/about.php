@@ -24,7 +24,7 @@
             </div>
             <h1 class="user-name">Henry</h1>
             <div class="profile-description">
-                <p class="desc-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
+                <p class="desc-font-color">Front-end + Jira</p>
             </div>
             <!-- END DIV HENRY-->
         </div>
@@ -36,7 +36,7 @@
             </div>
             <h1 class="user-name">Christos</h1>
             <div class="profile-description">
-                <p class="desc-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
+                <p class="desc-font-color">Back-end + Docker</p>
             </div>
             <!-- END DIV CHRISTOS-->
 
@@ -49,7 +49,7 @@
         </div>
         <h1 class="user-name">Patryk</h1>
         <div class="profile-description">
-            <p class="desc-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
+            <p class="desc-font-color">Back-end + Data base</p>
         </div>
 
     </div>
@@ -63,7 +63,7 @@
         </div>
         <h1 class="user-name">Mohamed</h1>
         <div class="profile-description">
-            <p class="desc-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
+            <p class="desc-font-color">Front-end + Confluance</p>
         </div>
 
     </div>
@@ -77,7 +77,7 @@
         </div>
         <h1 class="user-name">Nicolas</h1>
         <div class="profile-description">
-            <p class="desc-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
+            <p class="desc-font-color"></p>
         </div>
 
     </div>

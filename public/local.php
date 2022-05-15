@@ -368,20 +368,34 @@
 
 <!------------------------------------                 TOP ROW              --------------------------------->
 
+<?php
 
-<div class="d-flex justify-content-center">
-    <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
-        <canvas id="myChart1"></canvas>
+if (isset($_SESSION["logged"])) {
+  if ($_SESSION["logged"] == true) {
+      
+    print_r('
+    <div class="d-flex justify-content-center">
+      <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+          <canvas id="myChart1"></canvas>
+      </div>
+      <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+          <canvas id="myChartTemp"></canvas>
+      </div>
+      <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+          <canvas id="myChartHum"></canvas>
+      </div>
     </div>
-    <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
-        <canvas id="myChartTemp"></canvas>
-    </div>
-    <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
-        <canvas id="myChartHum"></canvas>
-    </div>
-</div>
+    
+    ');
 
 
+  }
+  
+}
+
+
+
+?>
 
 </div>
 
