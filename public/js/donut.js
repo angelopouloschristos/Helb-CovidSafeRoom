@@ -15,7 +15,7 @@ var Dial = function(container) {
 }
 
 Dial.prototype.create = function(value) {
-    this.createSvg();
+    this.createSvg(value);
     this.createDefs(value);
     this.createSlice();
     this.createOverlay();
@@ -24,14 +24,28 @@ Dial.prototype.create = function(value) {
     this.container.appendChild(this.svg);
 };
 
-Dial.prototype.createSvg = function() {
+Dial.prototype.createSvg = function(value) {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     //svg.setAttribute('width', this.size + 'px');
     //svg.setAttribute('height', this.size + 'px');
     svg.setAttribute('preservedAspectRatio', 'xMinYMin meet')
     svg.setAttribute('viewBox', '0 0 300 300')
     //svg.setAttribute('stop-color', '#ffc0cb');
-    
+
+
+
+    if(value > 0 && value < 700){
+
+        svg.classList.add("oke")
+
+    }
+
+    if(value > 700 && value < 820){
+
+        svg.classList.add("warning")
+
+    }
+
 
     this.svg = svg;
 };
@@ -44,20 +58,10 @@ Dial.prototype.createDefs = function(value) {
 
     stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
 
-    if(value > 0 && value < 700){
-        stop2.setAttribute('stop-color', '#48ff00');//vert
-        console.log(value);
-    }
-    if(value > 700 && value < 900){
-        stop2.setAttribute('stop-color', '#fff700');//jaune
-        console.log(value);
 
-    }
-    if(value > 900){
-        stop2.setAttribute('stop-color', '#ff005d');//rouge
-        console.log(value);
 
-    }
+        stop2.setAttribute('stop-color', '#ff0000');//rouge
+
 
 
     linearGradient.appendChild(stop2);
@@ -109,7 +113,7 @@ Dial.prototype.createText = function() {
     text.setAttribute('y', (this.size / 2) + fontSize / 4);
     text.setAttribute('font-family', 'Century Gothic, Lato');
     text.setAttribute('font-size', fontSize);
-    text.setAttribute('fill', '#78F8EC');
+    text.setAttribute('fill', '#ffffff');
     text.setAttribute('text-anchor', 'middle');
     var tspanSize = fontSize / 3;
     text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">PPM</tspan>';
@@ -133,7 +137,7 @@ Dial.prototype.createArrow = function() {
     var arrowDOffset =  m * (arrowSize / 1.5);
     var arrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
     arrow.setAttribute('d', 'M 0 0 ' + arrowSize + ' 0 ' + arrowSize / 2 + ' ' + arrowDOffset + ' 0 0 Z');
-    arrow.setAttribute('fill', '#97F8F0');
+    arrow.setAttribute('fill', '#ffffff');
     arrow.setAttribute('opacity', '0.6');
     arrow.setAttribute('transform', 'translate(' + arrowPosX + ',' + arrowPosY + ')');
     this.svg.appendChild(arrow);

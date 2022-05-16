@@ -15,7 +15,7 @@ var Dial = function(container) {
 }
 
 Dial.prototype.create = function(value) {
-    this.createSvg();
+    this.createSvg(value);
     this.createDefs(value);
     this.createSlice();
     this.createOverlay();
@@ -24,7 +24,7 @@ Dial.prototype.create = function(value) {
     this.container.appendChild(this.svg);
 };
 
-Dial.prototype.createSvg = function() {
+Dial.prototype.createSvg = function(value) {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     //svg.setAttribute('width', this.size + 'px');
     //svg.setAttribute('height', this.size + 'px');
@@ -32,8 +32,22 @@ Dial.prototype.createSvg = function() {
     svg.setAttribute('viewBox', '0 0 300 300')
     //svg.setAttribute('stop-color', '#ffc0cb');
 
-    this.svg = svg;
 
+
+    if(value > 0 && value < 700){
+
+        svg.classList.add("oke")
+
+    }
+
+    if(value > 700 && value < 820){
+
+        svg.classList.add("warning")
+
+    }
+
+
+    this.svg = svg;
 };
 
 Dial.prototype.createDefs = function(value) {
@@ -44,15 +58,10 @@ Dial.prototype.createDefs = function(value) {
 
     stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
 
-    if(value > 0 && value < 700){
-        stop2.setAttribute('stop-color', '#48ff00');//vert
-    }
-    if(value > 700 && value < 900){
-        stop2.setAttribute('stop-color', '#fff700');//jaune
-    }
-    if(value > 900){
-        stop2.setAttribute('stop-color', '#ff005d');//rouge
-    }
+
+
+        stop2.setAttribute('stop-color', '#ff0000');//rouge
+
 
 
     linearGradient.appendChild(stop2);
@@ -104,10 +113,10 @@ Dial.prototype.createText = function() {
     text.setAttribute('y', (this.size / 2) + fontSize / 4);
     text.setAttribute('font-family', 'Century Gothic, Lato');
     text.setAttribute('font-size', fontSize);
-    text.setAttribute('fill', '#78F8EC');
+    text.setAttribute('fill', '#ffffff');
     text.setAttribute('text-anchor', 'middle');
     var tspanSize = fontSize / 3;
-    text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
+    text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">PPM</tspan>';
     this.svg.appendChild(text);
     this.text = text;
 };
@@ -128,7 +137,7 @@ Dial.prototype.createArrow = function() {
     var arrowDOffset =  m * (arrowSize / 1.5);
     var arrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
     arrow.setAttribute('d', 'M 0 0 ' + arrowSize + ' 0 ' + arrowSize / 2 + ' ' + arrowDOffset + ' 0 0 Z');
-    arrow.setAttribute('fill', '#97F8F0');
+    arrow.setAttribute('fill', '#ffffff');
     arrow.setAttribute('opacity', '0.6');
     arrow.setAttribute('transform', 'translate(' + arrowPosX + ',' + arrowPosY + ')');
     this.svg.appendChild(arrow);
@@ -151,77 +160,6 @@ Dial.prototype.animateStart = function() {
         self.setValue(v);
     }, 10);
 };
-Dial.prototype.setValue = function(value) {
-    var c = (value / 900) * 360;
-    if(c === 360)
-        c = 359.99;
-    var xy = this.size / 2 - this.strokeWidth / 2;
-
-    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
-    this.slice.setAttribute('d', d);
-    var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">PPM</tspan>';
-};
-//fkjdhwswwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsw
-Dial.prototype.animateStart2 = function() {
-    var v = 0;
-    var self = this;
-    var intervalOne = setInterval(function() {
-        //var p = +(v / self.value).toFixed(2);
-        var a =3;
-        var x = 0;
-        v += a;
-        // Stop
-        if(v >= +self.value) {
-            v = self.value;
-            clearInterval(intervalOne);
-        }
-        self.setValue2(v,100);
-    }, 10);
-};
-////////////////////////////////////////ACTUELLEMENT LE TROISIEME COMPTEUR/////////////////////////
-Dial.prototype.setValue2 = function(value,max) {
-    var c = (value / max) * 360;
-    if(c === 360)
-        c = 359.99;
-    var xy = this.size / 2 - this.strokeWidth / 2;
-
-    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
-    this.slice.setAttribute('d', d);
-    var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">°C</tspan>';
-
-};
-Dial.prototype.animateStart3 = function() {
-    var v = 0;
-    var self = this;
-    var intervalOne = setInterval(function() {
-        //var p = +(v / self.value).toFixed(2);
-        var a =3;
-        var x = 0;
-        v += a;
-        // Stop
-        if(v >= +self.value) {
-            v = self.value;
-            clearInterval(intervalOne);
-        }
-        self.setValue3(v,50);
-    }, 10);
-};
-////////////////////////////////////////ACTUELLEMENT LE DEUXIEME COMPTEUR/////////////////////////
-
-Dial.prototype.setValue3 = function(value) {
-    var c = (value / 900) * 360;
-    if(c === 360)
-        c = 359.99;
-    var xy = this.size / 2 - this.strokeWidth / 2;
-
-    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
-    this.slice.setAttribute('d', d);
-    var tspanSize = (this.size / 3.5) / 3;
-    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">%HR</tspan>';
-};
-//fkjdhwswwswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswswsw
 
 Dial.prototype.animateReset = function() {
     this.setValue(0);
@@ -246,7 +184,17 @@ Dial.prototype.describeArc = function(x, y, radius, startAngle, endAngle){
     return d;
 }
 
+Dial.prototype.setValue = function(value) {
+    var c = (value / 900) * 360;
+    if(c === 360)
+        c = 359.99;
+    var xy = this.size / 2 - this.strokeWidth / 2;
 
+    var d = this.describeArc(xy, xy, xy, 180, 180 + c);
+    this.slice.setAttribute('d', d);
+    var tspanSize = (this.size / 3.5) / 3;
+    this.text.innerHTML = Math.floor(value) + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">&nbsp;&nbsp;&nbsp;</tspan>';
+};
 
 //
 // Usage
@@ -259,6 +207,9 @@ dial3 = new Dial(containers[2]);
 dial4 = new Dial(containers[3]);
 
 dial.animateStart();
-dial2.animateStart2();
-dial3.animateStart3();
+dial2.animateStart();
+dial3.animateStart();
 dial4.animateStart();
+
+const width = document.querySelector('#svgbox').offsetWidth
+console.log("Largeur de la div = " + width)
