@@ -374,18 +374,18 @@ if (isset($_SESSION["logged"])) {
   if ($_SESSION["logged"] == true) {
       
     print_r('
-    <div class="d-flex justify-content-center">
-      <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+    <div id="graphs" class="d-flex justify-content-center aspect-ratio">
+      <div id="graphs" style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
           <canvas id="myChart1"></canvas>
       </div>
-      <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+      <div id="graphs" style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
           <canvas id="myChartTemp"></canvas>
       </div>
-      <div style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
+      <div id="graphs" style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
           <canvas id="myChartHum"></canvas>
       </div>
     </div>
-    
+
     ');
 
 
@@ -400,6 +400,7 @@ if (isset($_SESSION["logged"])) {
 </div>
 
 <script>
+
 
 const data = {
   labels: [d6, d5, d4, d3, d2, d1, d0],
@@ -478,7 +479,9 @@ const config = {
   data: data,
   options: {
     responsive: true,
-    plugins: {
+      maintainAspectRatio: false,
+
+      plugins: {
       legend: {
         position: 'top'
       },
@@ -494,7 +497,9 @@ const configTemp = {
   data: dataTemp,
   options: {
     responsive: true,
-    plugins: {
+      maintainAspectRatio: false,
+
+      plugins: {
       legend: {
         position: 'top'
       },
@@ -510,7 +515,9 @@ const configHum = {
   data: dataHum,
   options: {
     responsive: true,
-    plugins: {
+      maintainAspectRatio: false,
+
+      plugins: {
       legend: {
         position: 'top'
       },
@@ -550,5 +557,5 @@ var myChart2 = new Chart(
 <!-- partial -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
 <script src='https://codepen.io/grayghostvisuals/pen/GqovBM/a08e0d79c150ff5030f9b6afaa137749.js'></script>
-<script  src="js/graph.minmax.js"></script>
+<!--<script  src="js/graph.minmax.js"></script>-->
 </html>

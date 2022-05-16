@@ -16,19 +16,6 @@ img{
 span{
     color: #78F8EC;
 }
-/*jaune*/
-.warning{
-    filter: hue-rotate(var(--value, 360deg));
-    --value:60deg;
-}
-
-.oke{
-    filter: hue-rotate(var(--value, 360deg));
-    --value:120deg;
-}
-
-
-
 .container {
     flex: 1;
     padding: 0 20px;
@@ -58,6 +45,10 @@ span{
     max-height: 300px;
     max-width: 600px;
 }
+#graphs{
+    padding-left: 50px;
+}
+
 #svgbox{
     max-width: 300px;
 }
@@ -77,14 +68,22 @@ and (max-width : 320px) {
         left: 50% !important;*/
 /****************************************   DERNIERS CHANGEMENTS ICI, TESTER RESPONSIVE AVEC MAX WIDTH */
     }
+    #graphs{
+        display: block !important;
+
+
+    }
+    #graphs{
+        max-width: 450px !important;
+    }
     #svgbox{
         margin: auto !important;
     }
     canvas{
-        width: 90% !important;
+        width: 86% !important;
     }
     .aspect-ratio{
-        padding-left: 50px !important;
+        padding-left: 15px !important;
     }
     /*svg{
         width: 50% !important;

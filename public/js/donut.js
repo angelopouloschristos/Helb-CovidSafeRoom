@@ -1,3 +1,4 @@
+var check_value = 0;
 var Dial = function(container) {
     this.container = container;
     this.size = this.container.dataset.size;
@@ -15,7 +16,7 @@ var Dial = function(container) {
 }
 
 Dial.prototype.create = function(value) {
-    this.createSvg(value);
+    this.createSvg();
     this.createDefs(value);
     this.createSlice();
     this.createOverlay();
@@ -24,46 +25,26 @@ Dial.prototype.create = function(value) {
     this.container.appendChild(this.svg);
 };
 
-Dial.prototype.createSvg = function(value) {
+Dial.prototype.createSvg = function() {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     //svg.setAttribute('width', this.size + 'px');
     //svg.setAttribute('height', this.size + 'px');
     svg.setAttribute('preservedAspectRatio', 'xMinYMin meet')
     svg.setAttribute('viewBox', '0 0 300 300')
     //svg.setAttribute('stop-color', '#ffc0cb');
-
-
-
-    if(value > 0 && value < 700){
-
-        svg.classList.add("oke")
-
-    }
-
-    if(value > 700 && value < 820){
-
-        svg.classList.add("warning")
-
-    }
-
+    
 
     this.svg = svg;
 };
 
 Dial.prototype.createDefs = function(value) {
+
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
     var linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
     linearGradient.setAttribute('id', 'gradient');
-
+    check_value = value;
 
     stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-
-
-
-        stop2.setAttribute('stop-color', '#ff0000');//rouge
-
-
-
     linearGradient.appendChild(stop2);
 
 
@@ -87,7 +68,19 @@ Dial.prototype.createDefs = function(value) {
 Dial.prototype.createSlice = function() {
     var slice = document.createElementNS("http://www.w3.org/2000/svg", "path");
     slice.setAttribute('fill', 'none');
-    slice.setAttribute('stroke', 'url(#gradient)');
+
+    if(check_value > 0 && check_value < 700){
+        slice.setAttribute('stroke', '#48ff00');
+    }
+    if(check_value > 700 && check_value < 900){
+        slice.setAttribute('stroke', 'yellow');
+
+    }
+    if(check_value >= 900){
+        slice.setAttribute('stroke', 'rgb(255,0,0)');
+
+    }
+
     slice.setAttribute('stroke-width', this.strokeWidth);
     slice.setAttribute('transform', 'translate(' + this.strokeWidth / 2 + ',' + this.strokeWidth / 2 + ')');
     slice.setAttribute('class', 'animate-draw');
@@ -113,7 +106,7 @@ Dial.prototype.createText = function() {
     text.setAttribute('y', (this.size / 2) + fontSize / 4);
     text.setAttribute('font-family', 'Century Gothic, Lato');
     text.setAttribute('font-size', fontSize);
-    text.setAttribute('fill', '#ffffff');
+    text.setAttribute('fill', '#78F8EC');
     text.setAttribute('text-anchor', 'middle');
     var tspanSize = fontSize / 3;
     text.innerHTML = 0 + '<tspan font-size="' + tspanSize + '" dy="' + -tspanSize * 1.2 + '">PPM</tspan>';
@@ -137,7 +130,7 @@ Dial.prototype.createArrow = function() {
     var arrowDOffset =  m * (arrowSize / 1.5);
     var arrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
     arrow.setAttribute('d', 'M 0 0 ' + arrowSize + ' 0 ' + arrowSize / 2 + ' ' + arrowDOffset + ' 0 0 Z');
-    arrow.setAttribute('fill', '#ffffff');
+    arrow.setAttribute('fill', '#97F8F0');
     arrow.setAttribute('opacity', '0.6');
     arrow.setAttribute('transform', 'translate(' + arrowPosX + ',' + arrowPosY + ')');
     this.svg.appendChild(arrow);
