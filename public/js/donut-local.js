@@ -40,9 +40,21 @@ Dial.prototype.createDefs = function(value) {
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
     var linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
     linearGradient.setAttribute('id', 'gradient');
-    check_value = value;
+
 
     stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+
+    if(value > 0 && value < 700){
+        stop2.setAttribute('stop-color', '#48ff00');//vert
+    }
+    if(value > 700 && value < 900){
+        stop2.setAttribute('stop-color', '#fff700');//jaune
+    }
+    if(value > 900){
+        stop2.setAttribute('stop-color', '#ff005d');//rouge
+    }
+
+
     linearGradient.appendChild(stop2);
 
 
@@ -66,19 +78,7 @@ Dial.prototype.createDefs = function(value) {
 Dial.prototype.createSlice = function() {
     var slice = document.createElementNS("http://www.w3.org/2000/svg", "path");
     slice.setAttribute('fill', 'none');
-
-    if(check_value > 0 && check_value < 700){
-        slice.setAttribute('stroke', '#48ff00');
-    }
-    if(check_value > 700 && check_value < 900){
-        slice.setAttribute('stroke', 'yellow');
-
-    }
-    if(check_value >= 900){
-        slice.setAttribute('stroke', 'rgb(255,0,0)');
-
-    }
-
+    slice.setAttribute('stroke', 'url(#gradient)');
     slice.setAttribute('stroke-width', this.strokeWidth);
     slice.setAttribute('transform', 'translate(' + this.strokeWidth / 2 + ',' + this.strokeWidth / 2 + ')');
     slice.setAttribute('class', 'animate-draw');
@@ -211,7 +211,7 @@ Dial.prototype.animateStart3 = function() {
 ////////////////////////////////////////ACTUELLEMENT LE DEUXIEME COMPTEUR/////////////////////////
 
 Dial.prototype.setValue3 = function(value) {
-    var c = (value / 100) * 360;
+    var c = (value / 900) * 360;
     if(c === 360)
         c = 359.99;
     var xy = this.size / 2 - this.strokeWidth / 2;

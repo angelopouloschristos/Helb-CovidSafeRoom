@@ -4,7 +4,7 @@
 // ============================================
 
 //////////////////////////////////////////////////////DEFINE CHART 1//////////////////////////////////////////////////////////////////////////////////
-Chart.defaults.global.defaultFontColor = "#fff";
+Chart.defaults.global.defaultFontColor = "#ffffff";
 
 var chartData1 = document.getElementById('chartDataLocal1').getContext('2d'),
     gradient1 = chartData1.createLinearGradient(0, 0, 0, 450);

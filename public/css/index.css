@@ -68,13 +68,14 @@ and (max-width : 320px) {
         left: 50% !important;*/
 /****************************************   DERNIERS CHANGEMENTS ICI, TESTER RESPONSIVE AVEC MAX WIDTH */
     }
-    #graphs{
+    #graph{
         display: block !important;
 
 
     }
     #graphs{
-        max-width: 450px !important;
+        max-width: 320px !important;
+        padding-left: 0px !important;
     }
     #svgbox{
         margin: auto !important;
@@ -83,7 +84,7 @@ and (max-width : 320px) {
         width: 86% !important;
     }
     .aspect-ratio{
-        padding-left: 15px !important;
+        padding-left: 0px !important;
     }
     /*svg{
         width: 50% !important;

@@ -374,7 +374,7 @@ if (isset($_SESSION["logged"])) {
   if ($_SESSION["logged"] == true) {
       
     print_r('
-    <div id="graphs" class="d-flex justify-content-center aspect-ratio">
+    <div id="graph" class="d-flex justify-content-center aspect-ratio">
       <div id="graphs" style="width: 600px; height: 300px;" class="d-flex justify-content-center" >
           <canvas id="myChart1"></canvas>
       </div>
@@ -398,9 +398,7 @@ if (isset($_SESSION["logged"])) {
 ?>
 
 </div>
-
 <script>
-
 
 const data = {
   labels: [d6, d5, d4, d3, d2, d1, d0],
